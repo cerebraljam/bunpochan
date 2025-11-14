@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bunpochan Settings</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>文法ちゃん</h1>
+      <p class="subtitle">Japanese Grammar Assistant</p>
+    </header>
+
+    <main>
+      <section class="settings-section">
+        <h2>JLPT Level Settings</h2>
+        <p class="description">
+          Select which JLPT grammar levels to display when analyzing text.
+          Disable levels you've already mastered to reduce clutter.
+        </p>
+
+        <div class="level-toggles">
+          <div class="toggle-item">
+            <label class="toggle-label">
+              <input type="checkbox" id="toggle-n5" class="level-checkbox">
+              <span class="toggle-slider"></span>
+              <span class="level-info">
+                <span class="level-name">N5 - Beginner</span>
+                <span class="level-description">Basic grammar patterns (です, ます, particles)</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <label class="toggle-label">
+              <input type="checkbox" id="toggle-n4" class="level-checkbox">
+              <span class="toggle-slider"></span>
+              <span class="level-info">
+                <span class="level-name">N4 - Elementary</span>
+                <span class="level-description">Common expressions (conditionals, intentions, appearance)</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <label class="toggle-label">
+              <input type="checkbox" id="toggle-n3" class="level-checkbox">
+              <span class="toggle-slider"></span>
+              <span class="level-info">
+                <span class="level-name">N3 - Intermediate</span>
+                <span class="level-description">Intermediate grammar patterns (coming soon)</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <label class="toggle-label">
+              <input type="checkbox" id="toggle-n2" class="level-checkbox">
+              <span class="toggle-slider"></span>
+              <span class="level-info">
+                <span class="level-name">N2 - Upper Intermediate</span>
+                <span class="level-description">Advanced expressions (coming soon)</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <label class="toggle-label">
+              <input type="checkbox" id="toggle-n1" class="level-checkbox">
+              <span class="toggle-slider"></span>
+              <span class="level-info">
+                <span class="level-name">N1 - Advanced</span>
+                <span class="level-description">Complex grammar patterns (coming soon)</span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h2>Usage Instructions</h2>
+        <div class="instructions">
+          <ol>
+            <li>Navigate to any webpage with Japanese text</li>
+            <li>Hover your mouse over a Japanese sentence</li>
+            <li>Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> together</li>
+            <li>A popup will appear showing the grammar patterns detected</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h2>About Bunpochan</h2>
+        <div class="about">
+          <p>
+            <strong>Version:</strong> 0.1.0 (MVP)
+          </p>
+          <p>
+            Bunpochan is a Japanese grammar learning assistant that helps you understand
+            grammar patterns while reading. Similar to Yomitan for vocabulary, bunpochan
+            provides on-demand grammar explanations.
+          </p>
+          <p>
+            Current database includes <strong>50+ grammar patterns</strong> for JLPT N5 and N4 levels.
+          </p>
+        </div>
+      </section>
+
+      <div class="save-status" id="save-status"></div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Bunpochan - Japanese Grammar Assistant</p>
+    </footer>
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+/* Bunpochan Popup Styles */
+
+.bunpochan-popup {
+  position: fixed;
+  z-index: 2147483647; /* Maximum z-index to appear above everything */
+  background: white;
+  border: 2px solid #6496ff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 400px;
+  min-width: 280px;
+  padding: 0;
+  color: #333;
+}
+
+.bunpochan-header {
+  background: linear-gradient(135deg, #6496ff 0%, #5080e8 100%);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px 6px 0 0;
+  font-weight: bold;
+  font-size: 16px;
+  border-bottom: 2px solid #4a7be0;
+}
+
+.bunpochan-results {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.grammar-point {
+  margin-bottom: 15px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-left: 4px solid #6496ff;
+  border-radius: 4px;
+}
+
+.grammar-point:last-child {
+  margin-bottom: 0;
+}
+
+.pattern-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #2d3748;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.level-badge {
+  display: inline-block;
+  background: #ffd700;
+  color: #333;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.level-badge.n5 {
+  background: #90ee90;
+}
+
+.level-badge.n4 {
+  background: #87ceeb;
+}
+
+.level-badge.n3 {
+  background: #ffd700;
+}
+
+.level-badge.n2 {
+  background: #ffa500;
+}
+
+.level-badge.n1 {
+  background: #ff6b6b;
+  color: white;
+}
+
+.pattern-meaning {
+  color: #4a5568;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.pattern-explanation {
+  color: #718096;
+  font-size: 13px;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.pattern-formation {
+  color: #718096;
+  font-size: 12px;
+  margin-top: 6px;
+  padding: 6px;
+  background: white;
+  border-radius: 3px;
+  font-style: italic;
+}
+
+.pattern-formation strong {
+  color: #4a5568;
+  font-weight: 600;
+}
+
+.bunpochan-no-results {
+  padding: 20px;
+  text-align: center;
+  color: #718096;
+  font-style: italic;
+}
+
+.bunpochan-loading .loading-text {
+  padding: 20px;
+  text-align: center;
+  color: #4a5568;
+}
+
+/* Scrollbar styling for results */
+.bunpochan-results::-webkit-scrollbar {
+  width: 8px;
+}
+
+.bunpochan-results::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.bunpochan-results::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 4px;
+}
+
+.bunpochan-results::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* Animation for popup appearance */
+@keyframes bunpochanFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bunpochan-popup {
+  animation: bunpochanFadeIn 0.2s ease-out;
+}
