@@ -1,0 +1,235 @@
+/* Bunpochan Popup Styles */
+
+.bunpochan-popup {
+  position: fixed;
+  z-index: 2147483647; /* Maximum z-index to appear above everything */
+  background: white;
+  border: 1px solid #6496ff;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  max-width: 350px;
+  min-width: 250px;
+  padding: 0;
+  color: #333;
+}
+
+.bunpochan-header {
+  background: linear-gradient(135deg, #6496ff 0%, #5080e8 100%);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 5px 5px 0 0;
+  font-weight: bold;
+  font-size: 13px;
+  border-bottom: 1px solid #4a7be0;
+}
+
+.bunpochan-results {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.grammar-point {
+  margin-bottom: 8px;
+  padding: 8px;
+  background: #f8f9fa;
+  border-left: 3px solid #6496ff;
+  border-radius: 3px;
+}
+
+.grammar-point:last-child {
+  margin-bottom: 0;
+}
+
+.pattern-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  gap: 8px;
+}
+
+.pattern-title-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.pattern-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #2d3748;
+}
+
+.star-button {
+  background: none;
+  border: none;
+  color: #cbd5e0;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 4px;
+  line-height: 1;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.star-button:hover {
+  transform: scale(1.2);
+  color: #ffd700;
+}
+
+.star-button.starred {
+  color: #ffd700;
+}
+
+.star-button.starred:hover {
+  color: #ffed4e;
+}
+
+.level-badge {
+  display: inline-block;
+  background: #ffd700;
+  color: #333;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.level-badge.n5 {
+  background: #90ee90;
+}
+
+.level-badge.n4 {
+  background: #87ceeb;
+}
+
+.level-badge.n3 {
+  background: #ffd700;
+}
+
+.level-badge.n2 {
+  background: #ffa500;
+}
+
+.level-badge.n1 {
+  background: #ff6b6b;
+  color: white;
+}
+
+.level-badge.common {
+  background: #9b59b6;
+  color: white;
+}
+
+/* Register badges */
+.register-badge {
+  display: inline-block;
+  background: #e8f4f8;
+  color: #2c5aa0;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: lowercase;
+  margin-left: 4px;
+}
+
+.register-badge.casual {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.register-badge.written {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.register-badge.spoken {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.pattern-meaning {
+  color: #4a5568;
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+.pattern-explanation {
+  color: #718096;
+  font-size: 11px;
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.pattern-formation {
+  color: #718096;
+  font-size: 11px;
+  margin-top: 4px;
+  padding: 4px;
+  background: white;
+  border-radius: 2px;
+  font-style: italic;
+}
+
+.pattern-formation strong {
+  color: #4a5568;
+  font-weight: 600;
+}
+
+.bunpochan-no-results {
+  padding: 15px;
+  text-align: center;
+  color: #718096;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.bunpochan-loading .loading-text {
+  padding: 15px;
+  text-align: center;
+  color: #4a5568;
+  font-size: 12px;
+}
+
+/* Scrollbar styling for results */
+.bunpochan-results::-webkit-scrollbar {
+  width: 8px;
+}
+
+.bunpochan-results::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.bunpochan-results::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 4px;
+}
+
+.bunpochan-results::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* Animation for popup appearance */
+@keyframes bunpochanFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bunpochan-popup {
+  animation: bunpochanFadeIn 0.2s ease-out;
+}

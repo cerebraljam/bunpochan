@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bunpochan Icons Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin-top: 0;
+        }
+        .icon-row {
+            display: flex;
+            gap: 40px;
+            margin: 30px 0;
+            align-items: flex-start;
+        }
+        .icon-display {
+            text-align: center;
+        }
+        .icon-display img {
+            display: block;
+            margin: 0 auto 10px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: white;
+        }
+        .icon-display .label {
+            font-size: 14px;
+            color: #666;
+        }
+        .checkerboard {
+            background-image:
+                linear-gradient(45deg, #ddd 25%, transparent 25%),
+                linear-gradient(-45deg, #ddd 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #ddd 75%),
+                linear-gradient(-45deg, transparent 75%, #ddd 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+        .dark {
+            background: #2d2d2d;
+        }
+        .section {
+            margin: 40px 0;
+        }
+        .section h2 {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bunpochan Icons Preview</h1>
+        <p><strong>Design:</strong> Light green to yellow gradient with 文 (bun/mon) character</p>
+
+        <div class="section">
+            <h2>Icon Sizes</h2>
+            <div class="icon-row">
+                <div class="icon-display">
+                    <img src="src/icons/icon16.png" alt="16x16 icon" width="16" height="16">
+                    <div class="label">16×16px</div>
+                </div>
+                <div class="icon-display">
+                    <img src="src/icons/icon48.png" alt="48x48 icon" width="48" height="48">
+                    <div class="label">48×48px</div>
+                </div>
+                <div class="icon-display">
+                    <img src="src/icons/icon128.png" alt="128x128 icon" width="128" height="128">
+                    <div class="label">128×128px</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Scaled Up (for detail inspection)</h2>
+            <div class="icon-row">
+                <div class="icon-display">
+                    <img src="src/icons/icon16.png" alt="16x16 icon scaled" width="64" height="64" style="image-rendering: pixelated;">
+                    <div class="label">16×16px (4x scale)</div>
+                </div>
+                <div class="icon-display">
+                    <img src="src/icons/icon48.png" alt="48x48 icon scaled" width="96" height="96">
+                    <div class="label">48×48px (2x scale)</div>
+                </div>
+                <div class="icon-display">
+                    <img src="src/icons/icon128.png" alt="128x128 icon" width="128" height="128">
+                    <div class="label">128×128px (actual)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>On Different Backgrounds</h2>
+            <div class="icon-row">
+                <div class="icon-display">
+                    <div style="padding: 20px; background: white; display: inline-block;">
+                        <img src="src/icons/icon128.png" alt="128x128 icon" width="128" height="128">
+                    </div>
+                    <div class="label">White background</div>
+                </div>
+                <div class="icon-display">
+                    <div class="checkerboard" style="padding: 20px; display: inline-block;">
+                        <img src="src/icons/icon128.png" alt="128x128 icon" width="128" height="128">
+                    </div>
+                    <div class="label">Transparent (checkerboard)</div>
+                </div>
+                <div class="icon-display">
+                    <div class="dark" style="padding: 20px; display: inline-block;">
+                        <img src="src/icons/icon128.png" alt="128x128 icon" width="128" height="128">
+                    </div>
+                    <div class="label">Dark background</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

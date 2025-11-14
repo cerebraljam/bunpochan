@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Bunpochan - Japanese Grammar Assistant",
+  "version": "0.2.0",
+  "description": "On-demand Japanese grammar pattern analyzer for JLPT learners. Press Ctrl+Alt over Japanese text to see grammar explanations.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "src/background/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content/content.js"],
+      "css": ["src/content/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "src/icons/icon16.png",
+      "48": "src/icons/icon48.png",
+      "128": "src/icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "src/icons/icon16.png",
+    "48": "src/icons/icon48.png",
+    "128": "src/icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/popup/popup.html",
+        "src/popup/popup.css",
+        "src/lib/kuromoji/kuromoji.js",
+        "src/lib/kuromoji/dict/*.gz"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
