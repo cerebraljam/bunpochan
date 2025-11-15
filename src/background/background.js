@@ -305,6 +305,7 @@ async function analyzeSentence(sentence) {
       detectedPatterns.push({
         id: pattern.id,
         pattern: pattern.pattern,
+        patternDisplay: pattern.patternDisplay, // Optional display with furigana
         level: pattern.level,
         register: pattern.register,
         meaning: pattern.meaning,

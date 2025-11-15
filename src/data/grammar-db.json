@@ -726,6 +726,7 @@
     {
       "id": "saichuu",
       "pattern": "～最中",
+      "patternDisplay": "～<ruby>最中<rt>さいちゅう</rt></ruby>",
       "level": "N3",
       "category": "time",
       "meaning": "in the middle of / while",
@@ -738,6 +739,7 @@
     {
       "id": "tochuu",
       "pattern": "～途中",
+      "patternDisplay": "～<ruby>途中<rt>とちゅう</rt></ruby>",
       "level": "N3",
       "category": "time",
       "meaning": "on the way / in the process of",
