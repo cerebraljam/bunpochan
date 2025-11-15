@@ -3,13 +3,13 @@
 A Chrome extension that helps Japanese learners understand grammar patterns while reading. Get instant grammar explanations with a simple keyboard shortcut!
 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue)
-![JLPT](https://img.shields.io/badge/JLPT-N5%20%7C%20N4-green)
+![JLPT](https://img.shields.io/badge/JLPT-N5%20%7C%20N4%20%7C%20N3%20%7C%20N2%20%7C%20N1-green)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 ## 🌟 Features
 
 - **On-demand Grammar Analysis**: Press `Ctrl+Alt` while hovering over Japanese text to see grammar patterns
-- **JLPT-Based Patterns**: Covers N5 and N4 grammar patterns (50+ patterns included)
+- **JLPT-Based Patterns**: Covers all JLPT levels N5 to N1 (125+ patterns included)
 - **Customizable Levels**: Toggle which JLPT levels to display in settings
 - **Non-intrusive**: Only activates when you need it, like Yomitan for vocabulary
 - **Beautiful Popup**: Clean, easy-to-read explanations with examples
@@ -80,7 +80,7 @@ Click the extension icon in the Chrome toolbar to open settings:
 
 ## 📚 Grammar Database
 
-The current version (0.1.0) includes **50+ grammar patterns** covering:
+The current version (0.1.0) includes **125+ grammar patterns** covering:
 
 ### N5 Patterns (26 patterns)
 - Copula: です、だ
@@ -109,6 +109,65 @@ The current version (0.1.0) includes **50+ grammar patterns** covering:
 - Appearance: ～そう、～みたい、～らしい
 - Possibility: ～かもしれない
 - Conjecture: ～だろう、～でしょう
+
+### N3 Patterns (25 patterns)
+- Decision: ～ことにする、～ことになる
+- Extent: ～ばかり
+- Conjecture: ～に違いない
+- Negation: ～わけではない
+- Possibility: ～とは限らない
+- Reason: ～おかげで、～せいで
+- Means: ～によって
+- Direction: ～に対して
+- Topic: ～に関して、～について
+- Role: ～として
+- Time: ～最中、～途中、～うちに、～ところ
+- Condition: ～上で、～限り
+- Frequency: ～たびに
+- Contrast: ～のに
+- Listing: ～とか
+- Explanation: ～もの
+- Reflection: ～ものだ
+
+### N2 Patterns (25 patterns)
+- Conclusion: ～わけだ
+- Obligation: ～わけにはいかない、～べき
+- Necessity: ～ざるを得ない
+- Compulsion: ～ないではいられない
+- Possibility: ～恐れがある
+- Time: ～次第
+- Reason: ～以上、～からには、～ことから
+- Correlation: ～ば～ほど、～に伴い
+- Condition: ～にしても
+- Addition: ～ばかりか
+- Emphasis: ～どころか
+- Emotion: ～てならない
+- Tendency: ～っぽい
+- Difficulty: ～がたい
+- Progression: ～つつある
+- Contrast: ～一方、～反面、～に反して
+- Basis: ～をもとに
+- Listing: ～をはじめ
+
+### N1 Patterns (25 patterns)
+- Condition: ～ことなしに、～ないことには、～たところで、～ともなると、～ようでは、～ようものなら
+- Manner: ～んばかりに
+- Result: ～ずじまい
+- Estimation: ～といったところだ
+- Prohibition: ～まじき
+- Degree: ～極まる
+- Purpose: ～かたがた
+- Parallel: ～かたわら
+- Difficulty: ～かねる
+- Tendency: ～きらいがある
+- Value: ～に足る、～に堪える
+- Addition: ～のみならず
+- Combination: ～と相まって
+- Preference: ～に限る
+- Trigger: ～を契機に
+- Topic: ～をめぐって
+- Location: ～において
+- Scope: ～を問わず
 
 ## 🛠️ Development
 
@@ -192,13 +251,12 @@ Then reload the extension!
 - ✅ Ctrl+Alt activation
 - ✅ Sentence extraction
 - ✅ Pattern matching engine
-- ✅ Grammar database (N5-N4)
+- ✅ Grammar database (N5-N1, 125+ patterns)
 - ✅ Popup UI
 - ✅ Settings page
 - ✅ Test page
 
 ### Phase 2 (Planned)
-- [ ] Add N3, N2, N1 grammar patterns
 - [ ] Improve pattern matching with kuromoji.js
 - [ ] Enhanced sentence boundary detection
 - [ ] Better handling of HTML elements
@@ -223,7 +281,7 @@ Then reload the extension!
 This is currently an MVP/personal project. Contributions are welcome! Please see `PROJECT.md` for the development plan.
 
 Ideas for contributions:
-- Add more grammar patterns (N3-N1)
+- Add more advanced or specialized grammar patterns
 - Improve pattern matching accuracy
 - Better sentence boundary detection
 - Translations for pattern explanations
