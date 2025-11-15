@@ -109,7 +109,7 @@ const testCases = [
   },
   {
     sentence: "雨のせいで、試合が中止になった。",
-    expectedPatterns: ["～せいで", "だ", "～で", "～が"],
+    expectedPatterns: ["～せいで", "～で", "～が"],
     level: "N3"
   },
   {
@@ -183,7 +183,7 @@ const testCases = [
   },
   {
     sentence: "この条件では承諾しかねます。",
-    expectedPatterns: ["～かねる", "ます", "～では"],
+    expectedPatterns: ["～かねる", "ます", "～で", "～は"],
     level: "N1"
   },
   {

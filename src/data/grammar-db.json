@@ -88,7 +88,7 @@
       "explanation": "Indicates an action in progress or a continuous state.",
       "formation": "Verb て-form + いる",
       "matching": {
-        "regex": "[でてんでで]ている"
+        "regex": "ている"
       }
     },
     {
@@ -100,7 +100,7 @@
       "explanation": "Polite form indicating an action in progress or continuous state.",
       "formation": "Verb て-form + います",
       "matching": {
-        "regex": "[でてんで]ています"
+        "regex": "ています"
       }
     },
     {
@@ -136,7 +136,7 @@
       "explanation": "Casual negative form of verbs and i-adjectives.",
       "formation": "Verb ない-form / I-adj stem + ない",
       "matching": {
-        "regex": "[わかがさたなばまら]ない"
+        "regex": "ない(?!て|で|の)"
       }
     },
     {
@@ -365,7 +365,7 @@
       "explanation": "Indicates prohibition or that something is not allowed.",
       "formation": "Verb て-form + はいけない",
       "matching": {
-        "regex": "[でて]はいけない|[でて]はダメ"
+        "regex": "てはいけない|てはいけません|ではいけない|ではいけません|てはダメ|ではダメ"
       }
     },
     {
@@ -389,7 +389,7 @@
       "explanation": "Strong obligation or necessity.",
       "formation": "Verb ない-form (without い) + ければならない",
       "matching": {
-        "regex": "なければならない|なければいけない"
+        "regex": "なければならない|なければなりません|なければいけない|なければいけません"
       }
     },
     {
@@ -413,7 +413,7 @@
       "explanation": "Indicates a change in state or ability.",
       "formation": "Verb dictionary form + ようになる",
       "matching": {
-        "regex": "ようになる|ように成る"
+        "regex": "ようになる|ようになった|ようになります|ようになりました|ように成る"
       }
     },
     {
@@ -425,7 +425,7 @@
       "explanation": "Indicates effort or intention to do something.",
       "formation": "Verb dictionary form + ようにする",
       "matching": {
-        "regex": "ようにする"
+        "regex": "ようにする|ようにした|ようにします|ようにしました|ようにしている|ようにしています"
       }
     },
     {
@@ -449,7 +449,7 @@
       "explanation": "Indicates a planned or scheduled action.",
       "formation": "Verb dictionary form + 予定",
       "matching": {
-        "regex": "[るう]予定"
+        "regex": "予定"
       }
     },
     {
@@ -1289,7 +1289,7 @@
       "explanation": "Indicates inability or difficulty (often used to politely refuse).",
       "formation": "Verb stem + かねる",
       "matching": {
-        "regex": "[りきしちにみびぎ]かねる"
+        "regex": "かねる|かねます|かねました|かねない"
       }
     },
     {
