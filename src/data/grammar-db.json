@@ -24,7 +24,9 @@
       "formation": "Noun/Na-adjective + だ",
       "matchingStrategy": "pos-based",
       "matching": {
-        "pos": ["助動詞"],
+        "pos": [
+          "助動詞"
+        ],
         "surface": "だ"
       }
     },
@@ -161,7 +163,9 @@
       "formation": "Noun + は",
       "matchingStrategy": "pos-based",
       "matching": {
-        "pos": ["助詞"],
+        "pos": [
+          "助詞"
+        ],
         "surface": "は"
       }
     },
@@ -175,8 +179,12 @@
       "formation": "Noun + が",
       "matchingStrategy": "pos-based",
       "matching": {
-        "pos": ["助詞"],
-        "pos_detail_1": ["格助詞"],
+        "pos": [
+          "助詞"
+        ],
+        "pos_detail_1": [
+          "格助詞"
+        ],
         "surface": "が"
       }
     },
@@ -190,7 +198,9 @@
       "formation": "Noun + を",
       "matchingStrategy": "pos-based",
       "matching": {
-        "pos": ["助詞"],
+        "pos": [
+          "助詞"
+        ],
         "surface": "を"
       }
     },
@@ -204,7 +214,9 @@
       "formation": "Noun + に",
       "matchingStrategy": "pos-based",
       "matching": {
-        "pos": ["助詞"],
+        "pos": [
+          "助詞"
+        ],
         "surface": "に"
       }
     },
@@ -218,7 +230,9 @@
       "formation": "Noun + で",
       "matchingStrategy": "pos-based",
       "matching": {
-        "pos": ["助詞"],
+        "pos": [
+          "助詞"
+        ],
         "surface": "で"
       }
     },
@@ -232,7 +246,9 @@
       "formation": "Noun + と",
       "matchingStrategy": "pos-based",
       "matching": {
-        "pos": ["助詞"],
+        "pos": [
+          "助詞"
+        ],
         "surface": "と"
       }
     },
@@ -246,7 +262,9 @@
       "formation": "Sentence + か",
       "matchingStrategy": "pos-based",
       "matching": {
-        "pos": ["助詞"],
+        "pos": [
+          "助詞"
+        ],
         "surface": "か"
       }
     },
@@ -260,7 +278,9 @@
       "formation": "Clause + から",
       "matchingStrategy": "pos-based",
       "matching": {
-        "pos": ["助詞"],
+        "pos": [
+          "助詞"
+        ],
         "surface": "から"
       }
     },
@@ -285,7 +305,11 @@
       "explanation": "Indicates contrast or concession (casual).",
       "formation": "Clause + けど",
       "matching": {
-        "forms": ["けど", "けれど", "けども"]
+        "forms": [
+          "けど",
+          "けれど",
+          "けども"
+        ]
       }
     },
     {
@@ -298,8 +322,12 @@
       "formation": "Clause + が",
       "matchingStrategy": "pos-based",
       "matching": {
-        "pos": ["助詞"],
-        "pos_detail_1": ["接続助詞"],
+        "pos": [
+          "助詞"
+        ],
+        "pos_detail_1": [
+          "接続助詞"
+        ],
         "surface": "が"
       }
     },
@@ -469,7 +497,8 @@
       "formation": "Verb dictionary form + 予定",
       "matching": {
         "regex": "予定"
-      }
+      },
+      "patternDisplay": "～<ruby>予定<rt>よてい</rt></ruby>"
     },
     {
       "id": "hazu",
@@ -493,7 +522,8 @@
       "formation": "Plain form + そうだ",
       "matching": {
         "regex": "[るうたい]そうだ|そうです"
-      }
+      },
+      "patternDisplay": "～そう (<ruby>伝聞<rt>でんぶん</rt></ruby>)"
     },
     {
       "id": "sou-appearance",
@@ -505,7 +535,8 @@
       "formation": "Verb stem/I-adj stem + そう",
       "matching": {
         "regex": "[りきしちにみびぎ]そう|[かさたなく]そう"
-      }
+      },
+      "patternDisplay": "～そう (<ruby>様態<rt>ようたい</rt></ruby>)"
     },
     {
       "id": "mitai",
@@ -613,7 +644,8 @@
       "formation": "Verb/Adj plain form + に違いない",
       "matching": {
         "regex": "に違いない|に違いありません"
-      }
+      },
+      "patternDisplay": "～に<ruby>違<rt>ちが</rt></ruby>いない"
     },
     {
       "id": "wake-de-wa-nai",
@@ -637,7 +669,8 @@
       "formation": "Verb dictionary form + とは限らない",
       "matching": {
         "regex": "とは限らない|とは限りません"
-      }
+      },
+      "patternDisplay": "～とは<ruby>限<rt>かぎ</rt></ruby>らない"
     },
     {
       "id": "okage-de",
@@ -685,7 +718,8 @@
       "formation": "Noun + に対して",
       "matching": {
         "regex": "に対して|に対し"
-      }
+      },
+      "patternDisplay": "～に<ruby>対<rt>たい</rt></ruby>して"
     },
     {
       "id": "ni-kanshite",
@@ -697,7 +731,8 @@
       "formation": "Noun + に関して",
       "matching": {
         "regex": "に関して|に関する|に関しては"
-      }
+      },
+      "patternDisplay": "～に<ruby>関<rt>かん</rt></ruby>して"
     },
     {
       "id": "ni-tsuite",
@@ -759,7 +794,8 @@
       "formation": "Verb た-form + 上で / Noun + の上で",
       "matching": {
         "regex": "上で|上での"
-      }
+      },
+      "patternDisplay": "～<ruby>上<rt>うえ</rt></ruby>で"
     },
     {
       "id": "kagiri",
@@ -771,7 +807,8 @@
       "formation": "Verb dictionary form + 限り / い-adj + 限り",
       "matching": {
         "regex": "[るう]限り|ない限り"
-      }
+      },
+      "patternDisplay": "～<ruby>限<rt>かぎ</rt></ruby>り"
     },
     {
       "id": "tabi-ni",
@@ -903,7 +940,8 @@
       "formation": "Verb ない-form (without ない) + ざるを得ない",
       "matching": {
         "regex": "ざるを得ない|ざるを得ません"
-      }
+      },
+      "patternDisplay": "～ざるを<ruby>得<rt>え</rt></ruby>ない"
     },
     {
       "id": "nai-de-wa-irarenai",
@@ -927,7 +965,8 @@
       "formation": "Verb dictionary form + 恐れがある",
       "matching": {
         "regex": "恐れがある|恐れがあります"
-      }
+      },
+      "patternDisplay": "～<ruby>恐<rt>おそ</rt></ruby>れがある"
     },
     {
       "id": "shidai",
@@ -939,7 +978,8 @@
       "formation": "Verb stem + 次第 / Noun + 次第",
       "matching": {
         "regex": "[りきしちにみびぎ]次第|次第だ|次第で"
-      }
+      },
+      "patternDisplay": "～<ruby>次第<rt>しだい</rt></ruby>"
     },
     {
       "id": "ijou",
@@ -951,7 +991,8 @@
       "formation": "Verb た-form/dictionary form + 以上",
       "matching": {
         "regex": "[るうた]以上|以上は"
-      }
+      },
+      "patternDisplay": "～<ruby>以上<rt>いじょう</rt></ruby>"
     },
     {
       "id": "kara-niwa",
@@ -1083,7 +1124,8 @@
       "formation": "Verb dictionary form + 一方 / Noun + の一方",
       "matching": {
         "regex": "[るう]一方|一方で|一方だ"
-      }
+      },
+      "patternDisplay": "～<ruby>一方<rt>いっぽう</rt></ruby>"
     },
     {
       "id": "hanmen",
@@ -1095,7 +1137,8 @@
       "formation": "Verb/Adj plain form + 反面",
       "matching": {
         "regex": "[るうたい]反面|反面で"
-      }
+      },
+      "patternDisplay": "～<ruby>反面<rt>はんめん</rt></ruby>"
     },
     {
       "id": "ni-tomonai",
@@ -1107,7 +1150,8 @@
       "formation": "Noun + に伴い / Verb + のに伴い",
       "matching": {
         "regex": "に伴い|に伴う|に伴って"
-      }
+      },
+      "patternDisplay": "～に<ruby>伴<rt>ともな</rt></ruby>い"
     },
     {
       "id": "ni-hanshite",
@@ -1119,7 +1163,8 @@
       "formation": "Noun + に反して",
       "matching": {
         "regex": "に反して|に反する"
-      }
+      },
+      "patternDisplay": "～に<ruby>反<rt>はん</rt></ruby>して"
     },
     {
       "id": "wo-moto-ni",
@@ -1275,7 +1320,8 @@
       "formation": "Na-adjective stem + 極まる",
       "matching": {
         "regex": "極まる|極まりない"
-      }
+      },
+      "patternDisplay": "～<ruby>極<rt>きわ</rt></ruby>まる"
     },
     {
       "id": "katagata",
@@ -1335,7 +1381,8 @@
       "formation": "Verb dictionary form + に足る / Noun + に足る",
       "matching": {
         "regex": "に足る|に足りる"
-      }
+      },
+      "patternDisplay": "～に<ruby>足<rt>た</rt></ruby>る"
     },
     {
       "id": "ni-taeru",
@@ -1347,7 +1394,8 @@
       "formation": "Verb dictionary form + に堪える / Noun + に堪える",
       "matching": {
         "regex": "に堪える|に耐える"
-      }
+      },
+      "patternDisplay": "～に<ruby>堪<rt>た</rt></ruby>える"
     },
     {
       "id": "nomi-narazu",
@@ -1371,7 +1419,8 @@
       "formation": "Noun + と相まって",
       "matching": {
         "regex": "と相まって"
-      }
+      },
+      "patternDisplay": "～と<ruby>相<rt>あい</rt></ruby>まって"
     },
     {
       "id": "ni-kagiru",
@@ -1383,7 +1432,8 @@
       "formation": "Noun/Verb dictionary form + に限る",
       "matching": {
         "regex": "に限る"
-      }
+      },
+      "patternDisplay": "～に<ruby>限<rt>かぎ</rt></ruby>る"
     },
     {
       "id": "wo-keiki-ni",
@@ -1395,7 +1445,8 @@
       "formation": "Noun + を契機に",
       "matching": {
         "regex": "を契機に|を契機として"
-      }
+      },
+      "patternDisplay": "～を<ruby>契機<rt>けいき</rt></ruby>に"
     },
     {
       "id": "wo-megutte",
@@ -1431,7 +1482,8 @@
       "formation": "Noun + を問わず",
       "matching": {
         "regex": "を問わず"
-      }
+      },
+      "patternDisplay": "～を<ruby>問<rt>と</rt></ruby>わず"
     },
     {
       "id": "jan",
@@ -1522,7 +1574,8 @@
       "formation": "Statement + とか言う",
       "matching": {
         "regex": "とか言う|とか"
-      }
+      },
+      "patternDisplay": "～とか<ruby>言<rt>い</rt></ruby>う"
     },
     {
       "id": "kuseni",
@@ -1600,7 +1653,9 @@
       "formation": "Statement/Name + って",
       "matchingStrategy": "pos-based",
       "matching": {
-        "pos": ["助詞"],
+        "pos": [
+          "助詞"
+        ],
         "surface": "って"
       }
     },
@@ -1654,7 +1709,9 @@
       "formation": "Verb dictionary form + な",
       "matchingStrategy": "pos-based",
       "matching": {
-        "pos": ["助詞"],
+        "pos": [
+          "助詞"
+        ],
         "surface": "な"
       }
     },
@@ -1786,7 +1843,8 @@
       "formation": "Noun + に際して",
       "matching": {
         "regex": "に際して|に際し"
-      }
+      },
+      "patternDisplay": "～に<ruby>際<rt>さい</rt></ruby>して"
     },
     {
       "id": "wo-tsujite-toshite",
@@ -1799,7 +1857,8 @@
       "formation": "Noun + を通じて/を通して",
       "matching": {
         "regex": "を通じて|を通して"
-      }
+      },
+      "patternDisplay": "～を<ruby>通<rt>つう</rt></ruby>じて/～を<ruby>通<rt>とお</rt></ruby>して"
     },
     {
       "id": "ni-motozuite",
@@ -1812,7 +1871,8 @@
       "formation": "Noun + に基づいて",
       "matching": {
         "regex": "に基づいて|に基づき|に基づく"
-      }
+      },
+      "patternDisplay": "～に<ruby>基<rt>もと</rt></ruby>づいて"
     },
     {
       "id": "ni-watatte",
@@ -1851,7 +1911,8 @@
       "formation": "Verb passive form",
       "matching": {
         "regex": "れる|られる(?!ない)"
-      }
+      },
+      "patternDisplay": "～れる/～られる (<ruby>受身<rt>うけみ</rt></ruby>)"
     },
     {
       "id": "causative-saseru",
@@ -1864,7 +1925,8 @@
       "formation": "Verb causative form",
       "matching": {
         "regex": "[さか]せる|させる"
-      }
+      },
+      "patternDisplay": "～せる/～させる (<ruby>使役<rt>しえき</rt></ruby>)"
     },
     {
       "id": "causative-passive",
@@ -1877,7 +1939,8 @@
       "formation": "Verb causative-passive form",
       "matching": {
         "regex": "[さか]せられる|させられる"
-      }
+      },
+      "patternDisplay": "～させられる (<ruby>使役受身<rt>しえきうけみ</rt></ruby>)"
     },
     {
       "id": "potential-rareru-eru",
@@ -1890,7 +1953,8 @@
       "formation": "Verb potential form",
       "matching": {
         "regex": "[えけせてねめべれげ]る"
-      }
+      },
+      "patternDisplay": "～れる/～える (<ruby>可能<rt>かのう</rt></ruby>)"
     },
     {
       "id": "volitional-you-mashou",
@@ -1903,7 +1967,8 @@
       "formation": "Verb volitional form",
       "matching": {
         "regex": "[おこそとのもよろご]う|ましょう"
-      }
+      },
+      "patternDisplay": "～よう/～ましょう (<ruby>意向<rt>いこう</rt></ruby>)"
     },
     {
       "id": "imperative-ro-nasai",
@@ -1916,7 +1981,8 @@
       "formation": "Verb imperative form",
       "matching": {
         "regex": "[りきしちにみびぎ]なさい|[えけせてねめべれげ]ろ|[いきしちにみびぎ]ろ"
-      }
+      },
+      "patternDisplay": "～ろ/～なさい (<ruby>命令<rt>めいれい</rt></ruby>)"
     },
     {
       "id": "nda-tte",
