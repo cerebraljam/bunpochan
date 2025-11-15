@@ -3,8 +3,8 @@
 
 console.log('Bunpochan background service worker loaded');
 
-// Load kuromoji.js library
-importScripts('src/lib/kuromoji/kuromoji.js');
+// Load kuromoji.js library (path relative to extension root)
+importScripts('/src/lib/kuromoji/kuromoji.js');
 
 // Grammar database cache
 let grammarDatabase = null;
