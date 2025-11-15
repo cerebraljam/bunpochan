@@ -1328,9 +1328,9 @@
       "category": "condition",
       "meaning": "if by any chance / if one dares to",
       "explanation": "Warns of severe consequences if something happens.",
-      "formation": "Verb よう + ものなら",
+      "formation": "Verb volitional + ものなら",
       "matching": {
-        "regex": "ようものなら"
+        "regex": "[おこそとのもよろご]うものなら"
       }
     },
     {
