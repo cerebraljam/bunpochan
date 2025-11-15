@@ -37,8 +37,7 @@
       "explanation": "Polite present/future tense verb ending.",
       "formation": "Verb stem + ます",
       "matching": {
-        "substring": "ます",
-        "regex": "ます"
+        "regex": "(?<!い)ます"
       }
     },
     {
