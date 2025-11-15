@@ -117,6 +117,33 @@ body {
 .level-badge.n3 { background: #ffd700; color: #333; }
 .level-badge.n2 { background: #ffa500; color: #333; }
 .level-badge.n1 { background: #ff6b6b; color: white; }
+.level-badge.common { background: #9b59b6; color: white; }
+
+/* Register badges */
+.register-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: lowercase;
+  margin-left: 4px;
+}
+
+.register-badge.casual {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.register-badge.written {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.register-badge.spoken {
+  background: #f8d7da;
+  color: #721c24;
+}
 
 .unstar-button {
   background: none;

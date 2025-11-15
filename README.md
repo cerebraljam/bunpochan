@@ -9,11 +9,14 @@ A Chrome extension that helps Japanese learners understand grammar patterns whil
 ## 🌟 Features
 
 - **On-demand Grammar Analysis**: Press `Ctrl+Alt` while hovering over Japanese text to see grammar patterns
-- **JLPT-Based Patterns**: Covers all JLPT levels N5 to N1 (125+ patterns included)
-- **Customizable Levels**: Toggle which JLPT levels to display in settings
+- **Comprehensive Coverage**: 175+ patterns including JLPT N5-N1 plus common casual/spoken forms
+- **Multiple Pattern Types**: JLPT patterns, casual speech, written/formal expressions
+- **Customizable Filters**: Toggle JLPT levels and register types (casual, written, neutral)
+- **Register Indicators**: Visual badges showing pattern formality (casual, written, neutral)
 - **Non-intrusive**: Only activates when you need it, like Yomitan for vocabulary
 - **Beautiful Popup**: Clean, easy-to-read explanations with examples
 - **Fast & Lightweight**: Pattern-based matching for instant results
+- **Star/Bookmark**: Save patterns you want to review later
 
 ## 📦 Installation (Development Mode)
 
@@ -75,12 +78,40 @@ And press `Ctrl+Alt`, you'll see:
 
 Click the extension icon in the Chrome toolbar to open settings:
 
-- **Toggle JLPT Levels**: Enable/disable N5, N4, N3, N2, N1 patterns
+- **Toggle JLPT Levels**: Enable/disable N5, N4, N3, N2, N1, and Common patterns
+- **Register Filters**: Filter by casual, written/formal, or neutral patterns
+- **Star Patterns**: View and manage your bookmarked grammar points
 - **Customize Your Experience**: Hide patterns you've already mastered
 
 ## 📚 Grammar Database
 
-The current version (0.1.0) includes **125+ grammar patterns** covering:
+The current version (0.2.0) includes **175+ grammar patterns** covering:
+
+### JLPT Patterns (N5-N1): ~125 patterns
+- **N5** (26 patterns): です、ます、particles, basic forms
+- **N4** (24 patterns): conditionals, たい/たがる, hearsay, appearance
+- **N3** (25 patterns): decisions, extent, conjecture, time expressions
+- **N2** (25 patterns): obligation, correlation, emphasis, written forms
+- **N1** (25 patterns): complex conditionals, literary, formal expressions
+
+### Common/Casual Patterns: ~50 patterns
+- **Casual Speech**: じゃん、～っけ、～なんて、～くせに
+- **Contractions**: ～ちゃう/じゃう、～んだけど
+- **Ending Particles**: ～よね、～かな、～さ、～ぜ/ぞ/わ
+- **Spoken Quotations**: ～って、～んだって
+- **Experience**: ～たことがある
+- **Habits**: ～ことにしている
+- **Verb Forms**: Passive, causative, potential, volitional, imperative
+
+### Written/Formal Patterns: ~20 patterns
+- **Formal Occasions**: ～に際して、～にあたって
+- **Formal Means**: ～を通じて、～に基づいて
+- **Formal Extent**: ～にわたって
+- **Literary Purpose**: ～べく
+
+## 📚 Grammar Database
+
+The current version (0.2.0) includes **175+ grammar patterns** covering:
 
 ### N5 Patterns (26 patterns)
 - Copula: です、だ
@@ -169,6 +200,34 @@ The current version (0.1.0) includes **125+ grammar patterns** covering:
 - Location: ～において
 - Scope: ～を問わず
 
+### Common/Casual Patterns (~50 patterns)
+- **Casual Speech**: じゃん、～っけ、～なんて、～くせに
+- **Contractions**: ～ちゃう/じゃう、～んだけど
+- **Ending Particles**: ～よね、～かな、～さ、～ぜ/ぞ/わ
+- **Spoken Quotations**: ～って、～んだって
+- **Experience**: ～たことがある
+- **Habits**: ～ことにしている
+- **Verb Forms**: Passive, causative, potential, volitional, imperative
+
+### Written/Formal Patterns (~20 patterns)
+- **Formal Occasions**: ～に際して、～にあたって
+- **Formal Means**: ～を通じて、～に基づいて
+- **Formal Extent**: ～にわたって
+- **Literary Purpose**: ～べく
+
+### Pattern Categories by Register:
+- 🟪 **Common** (Purple): Everyday casual/spoken patterns
+- 🟡 **Casual** (Yellow): Informal conversation
+- 🔵 **Written** (Blue): Formal/written text
+- ⚪ **Neutral** (No badge): Standard JLPT patterns
+
+All patterns include:
+- Pattern structure and JLPT level (when applicable)
+- Register indicator (casual, written, or neutral)
+- English meaning and detailed explanation
+- Formation rules
+- Usage notes
+
 ## 🛠️ Development
 
 ### Project Structure
@@ -245,29 +304,31 @@ Then reload the extension!
 
 ## 🎯 Roadmap
 
-### Current Version (0.1.0 - MVP)
+### Current Version (0.2.0)
 - ✅ Basic Chrome extension structure
 - ✅ Ctrl+Alt activation
 - ✅ Sentence extraction
 - ✅ Pattern matching engine
-- ✅ Grammar database (N5-N1, 125+ patterns)
-- ✅ Popup UI
-- ✅ Settings page
+- ✅ Grammar database (N5-N1 JLPT + Common patterns, 175+ total)
+- ✅ Popup UI with register badges
+- ✅ Settings page with JLPT level + register filters
+- ✅ Star/bookmark functionality
 - ✅ Test page
 
-### Phase 2 (Planned)
-- [ ] Improve pattern matching with kuromoji.js
+### Phase 3 (Planned)
+- [ ] Pattern variation detection (contracted forms)
+- [ ] Compound pattern detection
 - [ ] Enhanced sentence boundary detection
-- [ ] Better handling of HTML elements
 - [ ] Performance optimization
 - [ ] Example sentence translations
+- [ ] More dialect patterns (optional)
 
-### Phase 3 (Future)
+### Phase 4 (Future)
 - [ ] User statistics and progress tracking
-- [ ] Bookmark favorite patterns
 - [ ] Export to Anki
 - [ ] Community-contributed patterns
 - [ ] Study mode with practice quizzes
+- [ ] Pattern frequency analysis
 
 ## 🐛 Known Issues
 

@@ -100,6 +100,10 @@ async function showPopup(x, y, grammarPoints, sentence) {
       const isStarred = starredPatterns.hasOwnProperty(patternId);
       const starClass = isStarred ? 'starred' : '';
       const starIcon = isStarred ? '★' : '☆';
+      
+      // Add register badge if present
+      const registerBadge = point.register ? 
+        `<span class="register-badge ${escapeHtml(point.register)}">${escapeHtml(point.register)}</span>` : '';
 
       content += `
         <div class="grammar-point" data-pattern-id="${escapeHtml(patternId)}" data-sentence="${escapeHtml(sentence)}">
@@ -107,6 +111,7 @@ async function showPopup(x, y, grammarPoints, sentence) {
             <div class="pattern-title-group">
               <span class="pattern-title">${escapeHtml(point.pattern)}</span>
               <span class="level-badge ${point.level.toLowerCase()}">${point.level}</span>
+              ${registerBadge}
             </div>
             <button class="star-button ${starClass}" data-pattern-id="${escapeHtml(patternId)}" title="${isStarred ? 'Unstar' : 'Star'} this pattern">${starIcon}</button>
           </div>

@@ -113,11 +113,18 @@ async function loadSettings() {
         n4: true,
         n3: true,
         n2: true,
-        n1: true
+        n1: true,
+        common: true
+      },
+      enabledRegisters: {
+        casual: true,
+        written: true,
+        neutral: true
       }
     });
 
     const levels = result.enabledLevels;
+    const registers = result.enabledRegisters;
     const enabled = result.extensionEnabled;
 
     // Set extension enabled toggle
@@ -130,6 +137,12 @@ async function loadSettings() {
     document.getElementById('toggle-n3').checked = levels.n3;
     document.getElementById('toggle-n2').checked = levels.n2;
     document.getElementById('toggle-n1').checked = levels.n1;
+    document.getElementById('toggle-common').checked = levels.common;
+
+    // Set register toggles
+    document.getElementById('toggle-casual').checked = registers.casual;
+    document.getElementById('toggle-written').checked = registers.written;
+    document.getElementById('toggle-neutral').checked = registers.neutral;
   } catch (error) {
     console.error('Error loading settings:', error);
   }
@@ -142,11 +155,18 @@ async function saveSettings() {
     n4: document.getElementById('toggle-n4').checked,
     n3: document.getElementById('toggle-n3').checked,
     n2: document.getElementById('toggle-n2').checked,
-    n1: document.getElementById('toggle-n1').checked
+    n1: document.getElementById('toggle-n1').checked,
+    common: document.getElementById('toggle-common').checked
+  };
+
+  const enabledRegisters = {
+    casual: document.getElementById('toggle-casual').checked,
+    written: document.getElementById('toggle-written').checked,
+    neutral: document.getElementById('toggle-neutral').checked
   };
 
   try {
-    await chrome.storage.sync.set({ enabledLevels });
+    await chrome.storage.sync.set({ enabledLevels, enabledRegisters });
   } catch (error) {
     console.error('Error saving settings:', error);
   }
@@ -181,6 +201,10 @@ document.getElementById('extension-enabled').addEventListener('change', (e) => {
 });
 
 document.querySelectorAll('.level-checkbox').forEach(checkbox => {
+  checkbox.addEventListener('change', saveSettings);
+});
+
+document.querySelectorAll('.register-checkbox').forEach(checkbox => {
   checkbox.addEventListener('change', saveSettings);
 });
 

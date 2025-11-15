@@ -24,7 +24,7 @@
       "formation": "Noun/Na-adjective + だ",
       "matching": {
         "substring": "だ",
-        "regex": "[^ん]だ(?![っと])"
+        "regex": "(?<!わけ|はず|もの|そう|みたい|らしい|ばかり|のだ|けだ|んだ|ずだ)[^ん]だ(?![っと])"
       }
     },
     {
@@ -797,7 +797,7 @@
       "explanation": "Provides explanation or excuse (often used by women or children).",
       "formation": "Plain form + もの/もん",
       "matching": {
-        "regex": "[るうたい]もの|もん"
+        "regex": "[るうたい]もの(?![だす])|もん(?!だ)"
       }
     },
     {
@@ -1410,6 +1410,617 @@
       "formation": "Noun + を問わず",
       "matching": {
         "regex": "を問わず"
+      }
+    },
+    {
+      "id": "jan",
+      "pattern": "～じゃん",
+      "level": "Common",
+      "category": "casual-assertion",
+      "register": "casual",
+      "meaning": "isn't it / you know (casual)",
+      "explanation": "Casual spoken form expressing obvious facts or seeking agreement. Common in Tokyo/Kanto region.",
+      "formation": "Verb/Adj plain form + じゃん",
+      "matching": {
+        "regex": "じゃん"
+      }
+    },
+    {
+      "id": "kke",
+      "pattern": "～っけ",
+      "level": "Common",
+      "category": "ending-particle",
+      "register": "casual",
+      "meaning": "I wonder / let me recall",
+      "explanation": "Casual ending particle used when trying to remember or confirm something.",
+      "formation": "Verb/Adj plain form + っけ",
+      "matching": {
+        "regex": "[るうたい]っけ|だっけ"
+      }
+    },
+    {
+      "id": "nante",
+      "pattern": "～なんて",
+      "level": "Common",
+      "category": "dismissive",
+      "register": "casual",
+      "meaning": "something like / such a thing as",
+      "explanation": "Expresses dismissal, surprise, or modesty about something.",
+      "formation": "Noun/Verb + なんて",
+      "matching": {
+        "regex": "なんて"
+      }
+    },
+    {
+      "id": "ttara",
+      "pattern": "～ったら",
+      "level": "Common",
+      "category": "complaint",
+      "register": "casual",
+      "meaning": "as for / speaking of (complaint)",
+      "explanation": "Expresses complaint or emphasis about someone/something.",
+      "formation": "Noun + ったら",
+      "matching": {
+        "regex": "ったら"
+      }
+    },
+    {
+      "id": "tteba",
+      "pattern": "～ってば",
+      "level": "Common",
+      "category": "insistence",
+      "register": "casual",
+      "meaning": "I told you / I'm telling you",
+      "explanation": "Expresses insistence or frustration when repeating something.",
+      "formation": "Statement + ってば",
+      "matching": {
+        "regex": "ってば|ったら"
+      }
+    },
+    {
+      "id": "nanka",
+      "pattern": "～なんか",
+      "level": "Common",
+      "category": "casual-example",
+      "register": "casual",
+      "meaning": "things like / such as (casual)",
+      "explanation": "Casual way to give examples, often with dismissive nuance.",
+      "formation": "Noun + なんか",
+      "matching": {
+        "regex": "なんか"
+      }
+    },
+    {
+      "id": "toka-iu",
+      "pattern": "～とか言う",
+      "level": "Common",
+      "category": "hedging",
+      "register": "casual",
+      "meaning": "like / saying something like",
+      "explanation": "Hedging expression to soften statements or quote vaguely.",
+      "formation": "Statement + とか言う",
+      "matching": {
+        "regex": "とか言う|とか"
+      }
+    },
+    {
+      "id": "kuseni",
+      "pattern": "～くせに",
+      "level": "Common",
+      "category": "criticism",
+      "register": "casual",
+      "meaning": "even though / despite (critical)",
+      "explanation": "Expresses criticism or resentment about contradiction.",
+      "formation": "Verb/Adj plain form + くせに",
+      "matching": {
+        "regex": "[るうたい]くせに|なくせに|のくせに"
+      }
+    },
+    {
+      "id": "chau-shimau",
+      "pattern": "～ちゃう/～じゃう",
+      "level": "Common",
+      "category": "contraction",
+      "register": "casual",
+      "meaning": "end up doing (contraction of てしまう)",
+      "explanation": "Casual contracted form of てしまう indicating completion or regret.",
+      "formation": "Verb て-form + ちゃう/じゃう",
+      "matching": {
+        "regex": "[でて]ちゃう|[でて]じゃう|ちゃった|じゃった"
+      }
+    },
+    {
+      "id": "chatta-shimatta",
+      "pattern": "～ちゃった/～じゃった",
+      "level": "Common",
+      "category": "contraction",
+      "register": "casual",
+      "meaning": "ended up doing (contraction of てしまった)",
+      "explanation": "Casual contracted past form of てしまった.",
+      "formation": "Verb て-form + ちゃった/じゃった",
+      "matching": {
+        "regex": "ちゃった|じゃった"
+      }
+    },
+    {
+      "id": "nda-explanatory",
+      "pattern": "～んだ/～のだ",
+      "level": "Common",
+      "category": "explanatory",
+      "register": "neutral",
+      "meaning": "it is that / explanatory emphasis",
+      "explanation": "Provides explanation or emphasis for a statement.",
+      "formation": "Verb/Adj plain form + んだ/のだ",
+      "matching": {
+        "regex": "[るうたい]んだ|んです|のだ|のです"
+      }
+    },
+    {
+      "id": "ndakedo",
+      "pattern": "～んだけど",
+      "level": "Common",
+      "category": "softening",
+      "register": "casual",
+      "meaning": "it's just that / but",
+      "explanation": "Softens statements or leads into requests/explanations.",
+      "formation": "Statement + んだけど",
+      "matching": {
+        "regex": "んだけど|んですけど|のだけど"
+      }
+    },
+    {
+      "id": "tte-quotation",
+      "pattern": "～って",
+      "level": "Common",
+      "category": "quotation",
+      "register": "casual",
+      "meaning": "said / called / that (casual quotation)",
+      "explanation": "Casual quotation marker (casual form of と言う).",
+      "formation": "Statement/Name + って",
+      "matching": {
+        "regex": "って[い言]|って[はの]|って"
+      }
+    },
+    {
+      "id": "no-question",
+      "pattern": "～の？",
+      "level": "Common",
+      "category": "question",
+      "register": "casual",
+      "meaning": "is it? / question marker (casual)",
+      "explanation": "Casual question marker replacing か.",
+      "formation": "Statement + の",
+      "matching": {
+        "regex": "[るうたい]の？|なの？"
+      }
+    },
+    {
+      "id": "yone-confirmation",
+      "pattern": "～よね",
+      "level": "Common",
+      "category": "ending-particle",
+      "register": "neutral",
+      "meaning": "right? / isn't it?",
+      "explanation": "Seeks confirmation or agreement from listener.",
+      "formation": "Statement + よね",
+      "matching": {
+        "regex": "よね|ですよね"
+      }
+    },
+    {
+      "id": "kana-wondering",
+      "pattern": "～かな",
+      "level": "Common",
+      "category": "ending-particle",
+      "register": "casual",
+      "meaning": "I wonder",
+      "explanation": "Expresses wondering or uncertainty (casual).",
+      "formation": "Statement + かな",
+      "matching": {
+        "regex": "[るうたい]かな(?![らず])|かなあ"
+      }
+    },
+    {
+      "id": "na-prohibition",
+      "pattern": "～な",
+      "level": "Common",
+      "category": "prohibition",
+      "register": "casual",
+      "meaning": "don't (casual command)",
+      "explanation": "Casual prohibition (casual form of ～ないで).",
+      "formation": "Verb dictionary form + な",
+      "matching": {
+        "regex": "[るうく]な(?![いくのでにもがをはらど])"
+      }
+    },
+    {
+      "id": "sa-emphasis",
+      "pattern": "～さ",
+      "level": "Common",
+      "category": "ending-particle",
+      "register": "casual",
+      "meaning": "you know / emphasis",
+      "explanation": "Casual emphasis or explanation particle.",
+      "formation": "Statement + さ",
+      "matching": {
+        "regex": "(?<![だく])[るうた]さ(?![、。い])|だっさ"
+      }
+    },
+    {
+      "id": "ze-masculine",
+      "pattern": "～ぜ/～ぞ",
+      "level": "Common",
+      "category": "ending-particle",
+      "register": "casual",
+      "meaning": "emphasis (masculine)",
+      "explanation": "Masculine casual emphasis particle.",
+      "formation": "Statement + ぜ/ぞ",
+      "matching": {
+        "regex": "(?<![まくこ])[るうたいだ][ぜぞ](?![うき])"
+      }
+    },
+    {
+      "id": "wa-feminine",
+      "pattern": "～わ",
+      "level": "Common",
+      "category": "ending-particle",
+      "register": "casual",
+      "meaning": "emphasis (feminine)",
+      "explanation": "Feminine casual emphasis particle.",
+      "formation": "Statement + わ",
+      "matching": {
+        "regex": "(?<![だい])[るうた]わ(?![ないけ])|だわ(?![ける])"
+      }
+    },
+    {
+      "id": "kashira",
+      "pattern": "～かしら",
+      "level": "Common",
+      "category": "ending-particle",
+      "register": "casual",
+      "meaning": "I wonder (feminine)",
+      "explanation": "Feminine particle expressing wondering.",
+      "formation": "Statement + かしら",
+      "matching": {
+        "regex": "かしら"
+      }
+    },
+    {
+      "id": "ta-koto-ga-aru",
+      "pattern": "～たことがある",
+      "level": "N4",
+      "category": "experience",
+      "register": "neutral",
+      "meaning": "have done / have experienced",
+      "explanation": "Expresses past experience.",
+      "formation": "Verb た-form + ことがある",
+      "matching": {
+        "regex": "[たっ]ことがある|たことがあります"
+      }
+    },
+    {
+      "id": "koto-ni-shiteiru",
+      "pattern": "～ことにしている",
+      "level": "N3",
+      "category": "habit",
+      "register": "neutral",
+      "meaning": "make it a rule to / habitually do",
+      "explanation": "Expresses a habitual decision or practice.",
+      "formation": "Verb dictionary form + ことにしている",
+      "matching": {
+        "regex": "ことにしている|ことにしています"
+      }
+    },
+    {
+      "id": "to-iu-yori",
+      "pattern": "～というより",
+      "level": "N2",
+      "category": "correction",
+      "register": "neutral",
+      "meaning": "rather than",
+      "explanation": "Corrects or refines a previous statement.",
+      "formation": "Statement + というより",
+      "matching": {
+        "regex": "というより|と言うより"
+      }
+    },
+    {
+      "id": "ni-shitewa",
+      "pattern": "～にしては",
+      "level": "N2",
+      "category": "consideration",
+      "register": "neutral",
+      "meaning": "for / considering",
+      "explanation": "Indicates something is unexpected given the circumstances.",
+      "formation": "Noun + にしては",
+      "matching": {
+        "regex": "にしては"
+      }
+    },
+    {
+      "id": "ni-ataatte",
+      "pattern": "～にあたって",
+      "level": "N2",
+      "category": "occasion",
+      "register": "written",
+      "meaning": "on the occasion of / when doing",
+      "explanation": "Indicates an important occasion or timing (formal).",
+      "formation": "Noun/Verb dictionary form + にあたって",
+      "matching": {
+        "regex": "にあたって|にあたり"
+      }
+    },
+    {
+      "id": "ni-saishite",
+      "pattern": "～に際して",
+      "level": "N2",
+      "category": "occasion",
+      "register": "written",
+      "meaning": "on the occasion of / at the time of",
+      "explanation": "Formal expression for important occasions.",
+      "formation": "Noun + に際して",
+      "matching": {
+        "regex": "に際して|に際し"
+      }
+    },
+    {
+      "id": "wo-tsujite-toshite",
+      "pattern": "～を通じて/～を通して",
+      "level": "N2",
+      "category": "means",
+      "register": "written",
+      "meaning": "through / via / throughout",
+      "explanation": "Indicates means or duration (formal).",
+      "formation": "Noun + を通じて/を通して",
+      "matching": {
+        "regex": "を通じて|を通して"
+      }
+    },
+    {
+      "id": "ni-motozuite",
+      "pattern": "～に基づいて",
+      "level": "N2",
+      "category": "basis",
+      "register": "written",
+      "meaning": "based on / in accordance with",
+      "explanation": "Formal expression for basing something on evidence or rules.",
+      "formation": "Noun + に基づいて",
+      "matching": {
+        "regex": "に基づいて|に基づき|に基づく"
+      }
+    },
+    {
+      "id": "ni-watatte",
+      "pattern": "～にわたって",
+      "level": "N2",
+      "category": "extent",
+      "register": "written",
+      "meaning": "over / throughout / ranging over",
+      "explanation": "Indicates extent in time or space (formal).",
+      "formation": "Noun + にわたって",
+      "matching": {
+        "regex": "にわたって|にわたり|にわたる"
+      }
+    },
+    {
+      "id": "beku",
+      "pattern": "～べく",
+      "level": "N1",
+      "category": "purpose",
+      "register": "written",
+      "meaning": "in order to (formal/archaic)",
+      "explanation": "Formal/literary expression of purpose.",
+      "formation": "Verb dictionary form + べく",
+      "matching": {
+        "regex": "[るう]べく"
+      }
+    },
+    {
+      "id": "passive-rareru-reru",
+      "pattern": "～れる/～られる (受身)",
+      "level": "N4",
+      "category": "passive",
+      "register": "neutral",
+      "meaning": "passive form",
+      "explanation": "Indicates that the subject receives an action.",
+      "formation": "Verb passive form",
+      "matching": {
+        "regex": "れる|られる(?!ない)"
+      }
+    },
+    {
+      "id": "causative-saseru",
+      "pattern": "～せる/～させる (使役)",
+      "level": "N4",
+      "category": "causative",
+      "register": "neutral",
+      "meaning": "causative form / make someone do",
+      "explanation": "Indicates making or letting someone do something.",
+      "formation": "Verb causative form",
+      "matching": {
+        "regex": "[さか]せる|させる"
+      }
+    },
+    {
+      "id": "causative-passive",
+      "pattern": "～させられる (使役受身)",
+      "level": "N3",
+      "category": "causative-passive",
+      "register": "neutral",
+      "meaning": "be made to do",
+      "explanation": "Passive form of causative, indicating being forced to do something.",
+      "formation": "Verb causative-passive form",
+      "matching": {
+        "regex": "[さか]せられる|させられる"
+      }
+    },
+    {
+      "id": "potential-rareru-eru",
+      "pattern": "～れる/～える (可能)",
+      "level": "N4",
+      "category": "potential",
+      "register": "neutral",
+      "meaning": "potential form / can do",
+      "explanation": "Indicates ability to do something.",
+      "formation": "Verb potential form",
+      "matching": {
+        "regex": "[えけせてねめべれげ]る"
+      }
+    },
+    {
+      "id": "volitional-you-mashou",
+      "pattern": "～よう/～ましょう (意向)",
+      "level": "N5",
+      "category": "volitional",
+      "register": "neutral",
+      "meaning": "let's / shall we",
+      "explanation": "Volitional form expressing suggestion or intention.",
+      "formation": "Verb volitional form",
+      "matching": {
+        "regex": "[おこそとのもよろご]う|ましょう"
+      }
+    },
+    {
+      "id": "imperative-ro-nasai",
+      "pattern": "～ろ/～なさい (命令)",
+      "level": "N4",
+      "category": "imperative",
+      "register": "neutral",
+      "meaning": "do it (command)",
+      "explanation": "Imperative/command form.",
+      "formation": "Verb imperative form",
+      "matching": {
+        "regex": "[りきしちにみびぎ]なさい|[えけせてねめべれげ]ろ|[いきしちにみびぎ]ろ"
+      }
+    },
+    {
+      "id": "nda-tte",
+      "pattern": "～んだって",
+      "level": "Common",
+      "category": "hearsay",
+      "register": "casual",
+      "meaning": "I heard that / they say",
+      "explanation": "Casual way to report hearsay.",
+      "formation": "Statement + んだって",
+      "matching": {
+        "regex": "んだって|のだって"
+      }
+    },
+    {
+      "id": "tari-tari",
+      "pattern": "～たり～たり",
+      "level": "N4",
+      "category": "listing",
+      "register": "neutral",
+      "meaning": "do things like... and...",
+      "explanation": "Lists multiple actions as examples.",
+      "formation": "Verb た-form + り",
+      "matching": {
+        "regex": "[いきしちにみびぎりっ]たり"
+      }
+    },
+    {
+      "id": "nagara-while",
+      "pattern": "～ながら",
+      "level": "N4",
+      "category": "simultaneous",
+      "register": "neutral",
+      "meaning": "while doing / although",
+      "explanation": "Indicates simultaneous actions or contradiction.",
+      "formation": "Verb stem + ながら",
+      "matching": {
+        "regex": "[りきしちにみびぎ]ながら"
+      }
+    },
+    {
+      "id": "te-kara",
+      "pattern": "～てから",
+      "level": "N5",
+      "category": "sequence",
+      "register": "neutral",
+      "meaning": "after doing",
+      "explanation": "Indicates sequence of actions.",
+      "formation": "Verb て-form + から",
+      "matching": {
+        "regex": "[でて]から"
+      }
+    },
+    {
+      "id": "sou-ni-naru",
+      "pattern": "～そうになる",
+      "level": "N3",
+      "category": "near-action",
+      "register": "neutral",
+      "meaning": "almost / about to",
+      "explanation": "Indicates something almost happened.",
+      "formation": "Verb stem + そうになる",
+      "matching": {
+        "regex": "[りきしちにみびぎ]そうになる|そうになった"
+      }
+    },
+    {
+      "id": "you-to-suru",
+      "pattern": "～ようとする",
+      "level": "N3",
+      "category": "attempt",
+      "register": "neutral",
+      "meaning": "try to / attempt to",
+      "explanation": "Indicates attempting or trying to do something.",
+      "formation": "Verb volitional + とする",
+      "matching": {
+        "regex": "[おこそとのもよろご]うとする|ようとした"
+      }
+    },
+    {
+      "id": "kamo",
+      "pattern": "～かも",
+      "level": "Common",
+      "category": "possibility",
+      "register": "casual",
+      "meaning": "might / maybe (casual)",
+      "explanation": "Casual shortened form of かもしれない.",
+      "formation": "Statement + かも",
+      "matching": {
+        "regex": "[るうたい]かも(?![し])"
+      }
+    },
+    {
+      "id": "kke-na",
+      "pattern": "～っけな",
+      "level": "Common",
+      "category": "recall",
+      "register": "casual",
+      "meaning": "was it...? / let me think",
+      "explanation": "Casual particle for trying to recall information.",
+      "formation": "Statement + っけな",
+      "matching": {
+        "regex": "っけな|っけなあ"
+      }
+    },
+    {
+      "id": "mon",
+      "pattern": "～もん",
+      "level": "Common",
+      "category": "explanation",
+      "register": "casual",
+      "meaning": "because (childish/casual)",
+      "explanation": "Very casual/childish form of もの for giving reasons.",
+      "formation": "Statement + もん",
+      "matching": {
+        "regex": "[るうたい]もん|だもん"
+      }
+    },
+    {
+      "id": "n-ja",
+      "pattern": "～んじゃ",
+      "level": "Common",
+      "category": "contraction",
+      "register": "casual",
+      "meaning": "isn't it / contraction of のでは",
+      "explanation": "Casual contraction suggesting possibility or confirmation.",
+      "formation": "Statement + んじゃ",
+      "matching": {
+        "regex": "[るう]んじゃ|んじゃない"
       }
     }
   ]

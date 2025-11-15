@@ -37,19 +37,38 @@ async function loadUserSettings() {
         n4: true,
         n3: true,
         n2: true,
-        n1: true
+        n1: true,
+        common: true
+      },
+      enabledRegisters: {
+        casual: true,
+        written: true,
+        spoken: true,
+        neutral: true
       }
     });
-    userSettings = result.enabledLevels;
+    userSettings = {
+      levels: result.enabledLevels,
+      registers: result.enabledRegisters
+    };
     return userSettings;
   } catch (error) {
     console.error('Error loading settings:', error);
     return {
-      n5: true,
-      n4: true,
-      n3: true,
-      n2: true,
-      n1: true
+      levels: {
+        n5: true,
+        n4: true,
+        n3: true,
+        n2: true,
+        n1: true,
+        common: true
+      },
+      registers: {
+        casual: true,
+        written: true,
+        spoken: true,
+        neutral: true
+      }
     };
   }
 }
@@ -68,8 +87,16 @@ async function analyzeSentence(sentence) {
   for (const pattern of db.patterns) {
     // Check if this JLPT level is enabled
     const level = pattern.level.toLowerCase();
-    if (!settings[level]) {
+    if (!settings.levels[level]) {
       continue;
+    }
+
+    // Check if register filter is enabled (if pattern has register)
+    if (pattern.register) {
+      const register = pattern.register.toLowerCase();
+      if (settings.registers && !settings.registers[register]) {
+        continue;
+      }
     }
 
     // Try to match pattern
@@ -79,6 +106,7 @@ async function analyzeSentence(sentence) {
         id: pattern.id,
         pattern: pattern.pattern,
         level: pattern.level,
+        register: pattern.register,
         meaning: pattern.meaning,
         explanation: pattern.explanation,
         formation: pattern.formation,
@@ -196,9 +224,24 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 
   if (request.action === 'saveSettings') {
-    chrome.storage.sync.set({ enabledLevels: request.settings })
+    const settingsToSave = {};
+    if (request.enabledLevels) {
+      settingsToSave.enabledLevels = request.enabledLevels;
+    }
+    if (request.enabledRegisters) {
+      settingsToSave.enabledRegisters = request.enabledRegisters;
+    }
+    
+    chrome.storage.sync.set(settingsToSave)
       .then(() => {
-        userSettings = request.settings;
+        if (request.enabledLevels) {
+          if (!userSettings) userSettings = {};
+          userSettings.levels = request.enabledLevels;
+        }
+        if (request.enabledRegisters) {
+          if (!userSettings) userSettings = {};
+          userSettings.registers = request.enabledRegisters;
+        }
         sendResponse({
           success: true
         });
@@ -219,7 +262,7 @@ chrome.runtime.onInstalled.addListener((details) => {
   console.log('Bunpochan installed:', details.reason);
 
   // Initialize default settings
-  chrome.storage.sync.get('enabledLevels', (result) => {
+  chrome.storage.sync.get(['enabledLevels', 'enabledRegisters'], (result) => {
     if (!result.enabledLevels) {
       chrome.storage.sync.set({
         enabledLevels: {
@@ -227,7 +270,18 @@ chrome.runtime.onInstalled.addListener((details) => {
           n4: true,
           n3: true,
           n2: true,
-          n1: true
+          n1: true,
+          common: true
+        }
+      });
+    }
+    if (!result.enabledRegisters) {
+      chrome.storage.sync.set({
+        enabledRegisters: {
+          casual: true,
+          written: true,
+          spoken: true,
+          neutral: true
         }
       });
     }

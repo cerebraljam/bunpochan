@@ -23,16 +23,10 @@
 
 2. **Background Script** (`background.js`)
    - Manages grammar database
-   - Coordinates parsing and pattern matching
+   - Coordinates pattern matching
    - Handles user settings storage
 
-3. **Kuromoji.js Parser**
-   - Japanese morphological analyzer
-   - Tokenizes sentences into morphemes
-   - Provides part-of-speech tagging
-   - Identifies conjugations
-
-4. **Grammar Database** (`grammar-db.json`)
+3. **Grammar Database** (`grammar-db.json`)
    - Structured JSON containing JLPT N5-N1 grammar patterns
    - Each pattern includes:
      - Pattern structure
@@ -42,17 +36,18 @@
      - Example sentences
      - Matching rules
 
-5. **Pattern Matcher** (`pattern-matcher.js`)
-   - Analyzes morpheme sequences from kuromoji
-   - Matches against grammar database
-   - Returns identified grammar points
+4. **Pattern Matcher** (in `background.js`)
+   - Uses regex and substring matching
+   - Matches patterns against grammar database
+   - Returns identified grammar points with metadata
 
-6. **Popup UI** (`popup.html`, `popup.css`, `popup.js`)
+5. **Popup UI** (`popup.html`, `popup.css`, `popup.js`)
    - Displays identified grammar points
    - Shows explanations and examples
    - Positioned near cursor
+   - Star/bookmark feature for saving patterns
 
-7. **Settings Page** (`settings.html`, `settings.js`)
+6. **Settings Page** (`settings.html`, `settings.js`)
    - JLPT level toggles (N5, N4, N3, N2, N1)
    - User preferences storage
    - Extension configuration
@@ -60,11 +55,11 @@
 ## Technology Stack
 
 - **JavaScript (ES6+)**: Core extension logic
-- **Kuromoji.js**: Japanese morphological analysis
 - **Chrome Extension API (Manifest V3)**: Extension framework
 - **HTML/CSS**: UI components
 - **JSON**: Grammar database storage
 - **Chrome Storage API**: User settings persistence
+- **RegEx Pattern Matching**: Grammar pattern detection
 
 ## Project Structure
 
@@ -77,13 +72,9 @@ bunpochan/
 |   |-- content/
 |   |   |-- content.js           # Content script (sentence extraction, popup trigger)
 |   |   |-- content.css          # Popup styling
-|   |-- background/
-|   |   |-- background.js        # Service worker (analysis coordinator)
-|   |-- lib/
-|   |   |-- kuromoji/            # Kuromoji.js library and dictionaries
-|   |   |-- pattern-matcher.js   # Grammar pattern matching engine
-|   |   |-- sentence-extractor.js # Sentence boundary detection
-|   |-- data/
+   |-- background/
+   |   |-- background.js        # Service worker (pattern matching & settings)
+   |-- data/
 |   |   |-- grammar-db.json      # Grammar patterns database
 |   |-- popup/
 |   |   |-- popup.html           # Grammar explanation popup
@@ -118,13 +109,7 @@ bunpochan/
    - Extract sentence using Japanese punctuation markers (。、)
    - Handle basic edge cases
 
-3. Integrate Kuromoji.js
-   - Add kuromoji.js library
-   - Load dictionaries
-   - Create tokenization service
-   - Test with sample sentences
-
-4. Build initial grammar database
+3. Build initial grammar database
    - Create ~30-50 essential patterns (N5-N4 focus)
    - Structure: pattern, level, meaning, examples, matching rules
    - Patterns to include:
@@ -138,20 +123,21 @@ bunpochan/
      - たい (want to)
      - etc.
 
-5. Create pattern matcher
-   - Parse kuromoji output
-   - Match morpheme sequences against database
+4. Create pattern matcher
+   - Implement regex-based pattern matching
+   - Support substring and form variations
    - Return identified patterns with metadata
 
-6. Build popup UI
+5. Build popup UI
    - Create popup component
    - Position near cursor
    - Display grammar points
    - Show explanations and examples
    - Basic styling
 
-7. Basic settings page
-   - Toggle for N5/N4 patterns
+6. Settings page
+   - JLPT level toggles (N5-N1)
+   - Extension enable/disable toggle
    - Save preferences to Chrome storage
 
 **Deliverable**: Working extension that can identify basic grammar patterns in Japanese sentences
@@ -183,9 +169,9 @@ bunpochan/
    - Import/export settings
 
 5. Performance optimization
-   - Cache parsed results
+   - Cache pattern matching results
    - Lazy load grammar database
-   - Optimize kuromoji initialization
+   - Optimize regex compilation
 
 **Deliverable**: Full-featured extension with comprehensive JLPT coverage
 
@@ -293,9 +279,9 @@ Each grammar pattern entry follows this structure:
     }
   ],
   "matching": {
-    "morphemes": ["verb-te", "particle-te", "verb-iru"],
-    "regex": "\\w+ている",
-    "context": "requires-verb"
+    "substring": "ている",
+    "regex": "ている",
+    "forms": ["ている", "ています", "てる", "てます"]
   },
   "notes": "Can also indicate a resulting state (e.g., 結婚している = is married).",
   "related": ["te-form", "ta-form", "te-aru"]
@@ -307,34 +293,27 @@ Each grammar pattern entry follows this structure:
 ## Pattern Matching Strategy
 
 ### Approach
-1. **Tokenization**: Use kuromoji.js to break sentence into morphemes
-2. **Morpheme Analysis**: Extract part-of-speech and conjugation info
-3. **Sequence Matching**: Look for grammar pattern sequences in morpheme chain
-4. **Filtering**: Apply JLPT level filters based on user settings
-5. **Ranking**: Sort patterns by relevance/complexity
+1. **Pattern Detection**: Use regex and substring matching to find grammar patterns
+2. **Multiple Matching Methods**: Support regex, exact substring, and form variations
+3. **JLPT Filtering**: Apply JLPT level filters based on user settings
+4. **Position Tracking**: Record pattern positions within sentence
+5. **Ranking**: Sort patterns by position (earlier patterns first)
 
 ### Example Flow
 
 **Input sentence**: `私は本を読んでいる`
 
-**Kuromoji output**:
-```javascript
-[
-  {basic_form: "私", pos: "名詞", reading: "ワタシ"},
-  {basic_form: "は", pos: "助詞"},
-  {basic_form: "本", pos: "名詞", reading: "ホン"},
-  {basic_form: "を", pos: "助詞"},
-  {basic_form: "読む", pos: "動詞", conjugated_form: "連用形", reading: "ヨム"},
-  {basic_form: "て", pos: "助詞"},
-  {basic_form: "いる", pos: "動詞"},
-  {basic_form: "。", pos: "記号"}
-]
-```
+**Pattern matching process**:
+1. Search for each pattern in grammar database
+2. Check if pattern's JLPT level is enabled in settings
+3. Try regex match: `/ている/` → Found at position 6
+4. Try substring match: `を` → Found at position 3
+5. Try substring match: `は` → Found at position 1
 
-**Pattern matching**:
-- Detect `を` → Marks direct object (N5 pattern)
-- Detect `ている` → Progressive form (N5 pattern)
-- Detect `読む` → む-verb (N5/N4 pattern)
+**Detected patterns**:
+- `は` → Topic marker (N5 pattern)
+- `を` → Direct object marker (N5 pattern)
+- `ている` → Progressive form (N5 pattern)
 
 **Output**:
 ```javascript
@@ -408,30 +387,30 @@ function extractSentenceAtCursor(element, offset) {
 
 ### Optimization Strategies
 
-1. **Lazy Loading**
-   - Load kuromoji dictionaries asynchronously
-   - Initialize only when first needed
-   - Show loading indicator to user
+1. **Grammar Database Loading**
+   - Load grammar database on first use
+   - Cache in memory for subsequent requests
+   - Minimize database file size
 
-2. **Caching**
-   - Cache parsed sentences (with LRU eviction)
-   - Store recent pattern matches
-   - Persist user settings
+2. **Pattern Matching Cache**
+   - Cache recently analyzed sentences
+   - Avoid re-analyzing identical text
+   - Clear cache periodically to prevent memory bloat
 
-3. **Web Workers**
-   - Move kuromoji parsing to background thread
-   - Prevent UI blocking during analysis
-   - Handle async communication
+3. **Regex Optimization**
+   - Pre-compile regex patterns when database loads
+   - Use efficient regex patterns (avoid catastrophic backtracking)
+   - Prefer simple substring matching where possible
 
 4. **Database Optimization**
-   - Index patterns by level for quick filtering
-   - Pre-compile regex patterns
+   - Index patterns by JLPT level for quick filtering
+   - Organize patterns by frequency of occurrence
    - Use efficient data structures
 
 5. **Bundle Size**
-   - Kuromoji dictionaries: ~18MB uncompressed, ~3MB gzipped
-   - Consider lazy loading dictionary files
-   - Minimize grammar database
+   - Grammar database: ~150KB (125+ patterns)
+   - No external dependencies beyond Chrome APIs
+   - Minimal overhead for fast loading
 
 ---
 
@@ -538,9 +517,9 @@ function extractSentenceAtCursor(element, offset) {
 - **japanese-grammar-db**: GitHub repository
 
 ### Technical Resources
-- **Kuromoji.js**: [GitHub](https://github.com/takuyaa/kuromoji.js)
 - **Chrome Extension Docs**: [developer.chrome.com](https://developer.chrome.com/docs/extensions/)
 - **Manifest V3 Migration**: [Chrome Developers](https://developer.chrome.com/docs/extensions/mv3/intro/)
+- **JavaScript RegEx**: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
 
 ### Similar Tools
 - **Yomitan**: Vocabulary popup dictionary (inspiration for UX) [Yomitan on Github](https://github.com/yomidevs/yomitan)
@@ -563,17 +542,17 @@ MIT. This Chrome Extension was developed while testing Claude Code Web. Other th
 
 ## Changelog
 
-### v0.1.0 - MVP (In Development)
+### v0.1.0 - MVP (Completed)
 - Initial project setup
-- Basic Chrome extension structure
+- Chrome extension structure (Manifest V3)
 - Sentence extraction functionality
-- Kuromoji.js integration
-- Initial grammar database (N5-N4)
-- Pattern matching engine
-- Basic popup UI
-- Simple settings page
+- Comprehensive grammar database (N5-N1, 125+ patterns)
+- Pattern matching engine (regex/substring based)
+- Popup UI with star/bookmark feature
+- Settings page with JLPT level toggles
+- Extension enable/disable toggle
 
 ---
 
 **Last Updated**: 2025-11-15
-**Project Status**: Phase 2: Enhancement - In Development
+**Project Status**: Phase 1 (MVP) - Completed | Phase 2 (Enhancement) - Planning

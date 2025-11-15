@@ -122,6 +122,39 @@
   color: white;
 }
 
+.level-badge.common {
+  background: #9b59b6;
+  color: white;
+}
+
+/* Register badges */
+.register-badge {
+  display: inline-block;
+  background: #e8f4f8;
+  color: #2c5aa0;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: lowercase;
+  margin-left: 4px;
+}
+
+.register-badge.casual {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.register-badge.written {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.register-badge.spoken {
+  background: #f8d7da;
+  color: #721c24;
+}
+
 .pattern-meaning {
   color: #4a5568;
   margin-bottom: 4px;
