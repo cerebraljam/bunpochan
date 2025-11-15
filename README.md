@@ -178,7 +178,6 @@ bunpochan/
 ├── manifest.json              # Extension configuration
 ├── README.md                  # This file
 ├── PROJECT.md                 # Development plan
-├── IDEA.md                    # Project conception
 ├── src/
 │   ├── content/
 │   │   ├── content.js        # Main content script
