@@ -1729,8 +1729,11 @@
       "meaning": "I wonder",
       "explanation": "Expresses wondering or uncertainty (casual).",
       "formation": "Statement + かな",
+      "matchingStrategy": "pos-based",
       "matching": {
-        "regex": "[るうたい]かな(?![らず])|かなあ"
+        "pos": ["助詞"],
+        "pos_detail_1": ["終助詞"],
+        "surface": "かな"
       }
     },
     {
