@@ -302,6 +302,17 @@ document.addEventListener('mousemove', (e) => {
 document.addEventListener('keydown', async (e) => {
   // Check for Ctrl+Shift (both keys pressed)
   if (e.ctrlKey && e.shiftKey && !e.altKey && !e.metaKey) {
+    // Check if extension is enabled
+    try {
+      const result = await chrome.storage.sync.get({ extensionEnabled: true });
+      if (!result.extensionEnabled) {
+        console.log('Bunpochan is disabled');
+        return;
+      }
+    } catch (error) {
+      console.error('Error checking extension status:', error);
+    }
+
     // Prevent default behavior
     e.preventDefault();
 

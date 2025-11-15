@@ -107,6 +107,7 @@ function escapeHtml(text) {
 async function loadSettings() {
   try {
     const result = await chrome.storage.sync.get({
+      extensionEnabled: true,
       enabledLevels: {
         n5: true,
         n4: true,
@@ -117,7 +118,13 @@ async function loadSettings() {
     });
 
     const levels = result.enabledLevels;
+    const enabled = result.extensionEnabled;
 
+    // Set extension enabled toggle
+    document.getElementById('extension-enabled').checked = enabled;
+    updateExtensionStatus(enabled);
+
+    // Set JLPT level toggles
     document.getElementById('toggle-n5').checked = levels.n5;
     document.getElementById('toggle-n4').checked = levels.n4;
     document.getElementById('toggle-n3').checked = levels.n3;
@@ -145,7 +152,34 @@ async function saveSettings() {
   }
 }
 
-// Add event listeners for settings checkboxes
+// Update extension status display
+function updateExtensionStatus(enabled) {
+  const statusText = document.getElementById('status-text');
+  if (enabled) {
+    statusText.textContent = 'Enabled';
+    statusText.classList.remove('disabled');
+  } else {
+    statusText.textContent = 'Disabled';
+    statusText.classList.add('disabled');
+  }
+}
+
+// Toggle extension enabled/disabled
+async function toggleExtension(enabled) {
+  try {
+    await chrome.storage.sync.set({ extensionEnabled: enabled });
+    updateExtensionStatus(enabled);
+    console.log('Extension', enabled ? 'enabled' : 'disabled');
+  } catch (error) {
+    console.error('Error toggling extension:', error);
+  }
+}
+
+// Add event listeners
+document.getElementById('extension-enabled').addEventListener('change', (e) => {
+  toggleExtension(e.target.checked);
+});
+
 document.querySelectorAll('.level-checkbox').forEach(checkbox => {
   checkbox.addEventListener('change', saveSettings);
 });
