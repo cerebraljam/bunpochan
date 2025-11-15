@@ -989,7 +989,7 @@
       "explanation": "Indicates something will happen immediately after an action, or that something depends on circumstances.",
       "formation": "Verb stem + 次第 / Noun + 次第",
       "matching": {
-        "regex": "[りきしちにみびぎ]次第|次第だ|次第で"
+        "regex": "(?:[りきしちにみびぎ]|来|[分終着届決済揃][かきまみい])次第|次第だ|次第で"
       },
       "patternDisplay": "～<ruby>次第<rt>しだい</rt></ruby>"
     },
