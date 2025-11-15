@@ -76,6 +76,7 @@ async function analyzeSentence(sentence) {
     const matches = matchPattern(sentence, pattern);
     if (matches) {
       detectedPatterns.push({
+        id: pattern.id,
         pattern: pattern.pattern,
         level: pattern.level,
         meaning: pattern.meaning,

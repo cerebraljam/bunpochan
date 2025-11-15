@@ -88,7 +88,7 @@
       "explanation": "Indicates an action in progress or a continuous state.",
       "formation": "Verb て-form + いる",
       "matching": {
-        "regex": "[でてんでで]ている"
+        "regex": "ている"
       }
     },
     {
@@ -100,7 +100,7 @@
       "explanation": "Polite form indicating an action in progress or continuous state.",
       "formation": "Verb て-form + います",
       "matching": {
-        "regex": "[でてんで]ています"
+        "regex": "ています"
       }
     },
     {
@@ -136,7 +136,7 @@
       "explanation": "Casual negative form of verbs and i-adjectives.",
       "formation": "Verb ない-form / I-adj stem + ない",
       "matching": {
-        "regex": "[わかがさたなばまら]ない"
+        "regex": "ない(?!て|で|の)"
       }
     },
     {
@@ -365,7 +365,7 @@
       "explanation": "Indicates prohibition or that something is not allowed.",
       "formation": "Verb て-form + はいけない",
       "matching": {
-        "regex": "[でて]はいけない|[でて]はダメ"
+        "regex": "てはいけない|てはいけません|ではいけない|ではいけません|てはダメ|ではダメ"
       }
     },
     {
@@ -389,7 +389,7 @@
       "explanation": "Strong obligation or necessity.",
       "formation": "Verb ない-form (without い) + ければならない",
       "matching": {
-        "regex": "なければならない|なければいけない"
+        "regex": "なければならない|なければなりません|なければいけない|なければいけません"
       }
     },
     {
@@ -413,7 +413,7 @@
       "explanation": "Indicates a change in state or ability.",
       "formation": "Verb dictionary form + ようになる",
       "matching": {
-        "regex": "ようになる|ように成る"
+        "regex": "ようになる|ようになった|ようになります|ようになりました|ように成る"
       }
     },
     {
@@ -425,7 +425,7 @@
       "explanation": "Indicates effort or intention to do something.",
       "formation": "Verb dictionary form + ようにする",
       "matching": {
-        "regex": "ようにする"
+        "regex": "ようにする|ようにした|ようにします|ようにしました|ようにしている|ようにしています"
       }
     },
     {
@@ -449,7 +449,7 @@
       "explanation": "Indicates a planned or scheduled action.",
       "formation": "Verb dictionary form + 予定",
       "matching": {
-        "regex": "[るう]予定"
+        "regex": "予定"
       }
     },
     {
@@ -546,6 +546,870 @@
       "formation": "Verb plain form + でしょう",
       "matching": {
         "regex": "でしょう"
+      }
+    },
+    {
+      "id": "koto-ni-suru",
+      "pattern": "～ことにする",
+      "level": "N3",
+      "category": "decision",
+      "meaning": "decide to",
+      "explanation": "Expresses a decision made by the speaker or subject.",
+      "formation": "Verb dictionary form + ことにする",
+      "matching": {
+        "regex": "ことにする|ことにした|ことにします|ことにしました"
+      }
+    },
+    {
+      "id": "koto-ni-naru",
+      "pattern": "～ことになる",
+      "level": "N3",
+      "category": "decision",
+      "meaning": "it has been decided that",
+      "explanation": "Expresses a decision made by others or circumstances, not by the speaker.",
+      "formation": "Verb dictionary form + ことになる",
+      "matching": {
+        "regex": "ことになる|ことになった|ことになります|ことになりました"
+      }
+    },
+    {
+      "id": "bakari",
+      "pattern": "～ばかり",
+      "level": "N3",
+      "category": "extent",
+      "meaning": "just did / only / nothing but",
+      "explanation": "Indicates that something has just happened, or expresses 'only' or 'nothing but'.",
+      "formation": "Verb た-form + ばかり / Noun + ばかり",
+      "matching": {
+        "regex": "[たっ]ばかり|ばかりだ|ばかりで"
+      }
+    },
+    {
+      "id": "ni-chigai-nai",
+      "pattern": "～に違いない",
+      "level": "N3",
+      "category": "conjecture",
+      "meaning": "must be / no doubt",
+      "explanation": "Expresses strong conviction or certainty about something.",
+      "formation": "Verb/Adj plain form + に違いない",
+      "matching": {
+        "regex": "に違いない|に違いありません"
+      }
+    },
+    {
+      "id": "wake-de-wa-nai",
+      "pattern": "～わけではない",
+      "level": "N3",
+      "category": "negation",
+      "meaning": "it doesn't mean that / not necessarily",
+      "explanation": "Partial negation meaning 'it's not that' or 'not necessarily'.",
+      "formation": "Verb/Adj plain form + わけではない",
+      "matching": {
+        "regex": "わけではない|わけじゃない|わけではありません"
+      }
+    },
+    {
+      "id": "to-wa-kagiranai",
+      "pattern": "～とは限らない",
+      "level": "N3",
+      "category": "possibility",
+      "meaning": "not necessarily / not always",
+      "explanation": "Indicates that something is not always the case.",
+      "formation": "Verb dictionary form + とは限らない",
+      "matching": {
+        "regex": "とは限らない|とは限りません"
+      }
+    },
+    {
+      "id": "okage-de",
+      "pattern": "～おかげで",
+      "level": "N3",
+      "category": "reason",
+      "meaning": "thanks to",
+      "explanation": "Indicates a positive reason or cause. Used for favorable outcomes.",
+      "formation": "Noun + のおかげで / Verb た-form + おかげで",
+      "matching": {
+        "regex": "おかげで|おかげだ"
+      }
+    },
+    {
+      "id": "sei-de",
+      "pattern": "～せいで",
+      "level": "N3",
+      "category": "reason",
+      "meaning": "because of / due to (negative)",
+      "explanation": "Indicates a negative reason or cause. Used for unfavorable outcomes.",
+      "formation": "Noun + のせいで / Verb た-form + せいで",
+      "matching": {
+        "regex": "せいで|せいだ"
+      }
+    },
+    {
+      "id": "ni-yotte",
+      "pattern": "～によって",
+      "level": "N3",
+      "category": "means",
+      "meaning": "depending on / by means of / by",
+      "explanation": "Indicates means, method, or that something varies depending on circumstances.",
+      "formation": "Noun + によって",
+      "matching": {
+        "regex": "によって|により"
+      }
+    },
+    {
+      "id": "ni-taishite",
+      "pattern": "～に対して",
+      "level": "N3",
+      "category": "direction",
+      "meaning": "toward / in contrast to",
+      "explanation": "Indicates direction of action or feeling, or expresses contrast.",
+      "formation": "Noun + に対して",
+      "matching": {
+        "regex": "に対して|に対し"
+      }
+    },
+    {
+      "id": "ni-kanshite",
+      "pattern": "～に関して",
+      "level": "N3",
+      "category": "topic",
+      "meaning": "regarding / concerning",
+      "explanation": "Indicates the topic being discussed or considered.",
+      "formation": "Noun + に関して",
+      "matching": {
+        "regex": "に関して|に関する|に関しては"
+      }
+    },
+    {
+      "id": "ni-tsuite",
+      "pattern": "～について",
+      "level": "N3",
+      "category": "topic",
+      "meaning": "about / concerning",
+      "explanation": "Indicates the topic or subject matter.",
+      "formation": "Noun + について",
+      "matching": {
+        "regex": "について|についての"
+      }
+    },
+    {
+      "id": "to-shite",
+      "pattern": "～として",
+      "level": "N3",
+      "category": "role",
+      "meaning": "as",
+      "explanation": "Indicates a role, capacity, or status.",
+      "formation": "Noun + として",
+      "matching": {
+        "regex": "として|としての"
+      }
+    },
+    {
+      "id": "saichuu",
+      "pattern": "～最中",
+      "level": "N3",
+      "category": "time",
+      "meaning": "in the middle of / while",
+      "explanation": "Indicates being in the midst of an action or event.",
+      "formation": "Verb ている + 最中 / Noun + の最中",
+      "matching": {
+        "regex": "最中|最中に|最中だ"
+      }
+    },
+    {
+      "id": "tochuu",
+      "pattern": "～途中",
+      "level": "N3",
+      "category": "time",
+      "meaning": "on the way / in the process of",
+      "explanation": "Indicates being in the middle of a process or journey.",
+      "formation": "Verb dictionary form + 途中 / Noun + の途中",
+      "matching": {
+        "regex": "途中|途中で|途中に"
+      }
+    },
+    {
+      "id": "ue-de",
+      "pattern": "～上で",
+      "level": "N3",
+      "category": "condition",
+      "meaning": "upon / after / in terms of",
+      "explanation": "Indicates a condition or context for something.",
+      "formation": "Verb た-form + 上で / Noun + の上で",
+      "matching": {
+        "regex": "上で|上での"
+      }
+    },
+    {
+      "id": "kagiri",
+      "pattern": "～限り",
+      "level": "N3",
+      "category": "condition",
+      "meaning": "as long as / as far as",
+      "explanation": "Indicates a limit or extent of something.",
+      "formation": "Verb dictionary form + 限り / い-adj + 限り",
+      "matching": {
+        "regex": "[るう]限り|ない限り"
+      }
+    },
+    {
+      "id": "tabi-ni",
+      "pattern": "～たびに",
+      "level": "N3",
+      "category": "frequency",
+      "meaning": "every time / whenever",
+      "explanation": "Indicates that something happens each time a certain action occurs.",
+      "formation": "Verb dictionary form + たびに",
+      "matching": {
+        "regex": "[るう]たびに"
+      }
+    },
+    {
+      "id": "uchi-ni",
+      "pattern": "～うちに",
+      "level": "N3",
+      "category": "time",
+      "meaning": "while / during",
+      "explanation": "Indicates that something happens while in a certain state.",
+      "formation": "Verb ている + うちに / い-adj + うちに",
+      "matching": {
+        "regex": "うちに|ううちに"
+      }
+    },
+    {
+      "id": "tokoro",
+      "pattern": "～ところ",
+      "level": "N3",
+      "category": "time",
+      "meaning": "at the point of / just about to",
+      "explanation": "Indicates timing relative to an action.",
+      "formation": "Verb + ところ (various forms)",
+      "matching": {
+        "regex": "[るたい]ところ|ところです|ところだ"
+      }
+    },
+    {
+      "id": "mono",
+      "pattern": "～もの",
+      "level": "N3",
+      "category": "explanation",
+      "meaning": "because / the thing is",
+      "explanation": "Provides explanation or excuse (often used by women or children).",
+      "formation": "Plain form + もの/もん",
+      "matching": {
+        "regex": "[るうたい]もの|もん"
+      }
+    },
+    {
+      "id": "noni",
+      "pattern": "～のに",
+      "level": "N3",
+      "category": "contrast",
+      "meaning": "although / in spite of / despite",
+      "explanation": "Expresses contrast or disappointment that expectations were not met.",
+      "formation": "Verb/Adj plain form + のに",
+      "matching": {
+        "regex": "[るうたい]のに|なのに"
+      }
+    },
+    {
+      "id": "toka",
+      "pattern": "～とか",
+      "level": "N3",
+      "category": "listing",
+      "meaning": "such as / and so on",
+      "explanation": "Lists examples in a casual way.",
+      "formation": "Noun + とか / Verb plain form + とか",
+      "matching": {
+        "regex": "とか"
+      }
+    },
+    {
+      "id": "mono-da",
+      "pattern": "～ものだ",
+      "level": "N3",
+      "category": "reflection",
+      "meaning": "used to / it's natural to",
+      "explanation": "Expresses nostalgia, general truth, or advice.",
+      "formation": "Verb plain form + ものだ",
+      "matching": {
+        "regex": "[るうたい]ものだ|ものです"
+      }
+    },
+    {
+      "id": "wake-da",
+      "pattern": "～わけだ",
+      "level": "N2",
+      "category": "conclusion",
+      "meaning": "it means that / no wonder",
+      "explanation": "Indicates a natural conclusion or understanding based on previous information.",
+      "formation": "Verb/Adj plain form + わけだ",
+      "matching": {
+        "regex": "わけだ|わけです"
+      }
+    },
+    {
+      "id": "wake-ni-wa-ikanai",
+      "pattern": "～わけにはいかない",
+      "level": "N2",
+      "category": "obligation",
+      "meaning": "cannot afford to / must not",
+      "explanation": "Expresses that one cannot do something due to social or moral constraints.",
+      "formation": "Verb dictionary form + わけにはいかない",
+      "matching": {
+        "regex": "わけにはいかない|わけにいかない"
+      }
+    },
+    {
+      "id": "beki",
+      "pattern": "～べき",
+      "level": "N2",
+      "category": "obligation",
+      "meaning": "should / ought to",
+      "explanation": "Expresses strong obligation or what ought to be done.",
+      "formation": "Verb dictionary form + べき",
+      "matching": {
+        "regex": "[るう]べき|べきだ|べきです"
+      }
+    },
+    {
+      "id": "zaruwoenai",
+      "pattern": "～ざるを得ない",
+      "level": "N2",
+      "category": "necessity",
+      "meaning": "cannot help but / have no choice but to",
+      "explanation": "Expresses unavoidable necessity or compulsion.",
+      "formation": "Verb ない-form (without ない) + ざるを得ない",
+      "matching": {
+        "regex": "ざるを得ない|ざるを得ません"
+      }
+    },
+    {
+      "id": "nai-de-wa-irarenai",
+      "pattern": "～ないではいられない",
+      "level": "N2",
+      "category": "compulsion",
+      "meaning": "cannot help but / cannot resist",
+      "explanation": "Expresses an irresistible urge or emotional compulsion.",
+      "formation": "Verb ない-form + ではいられない",
+      "matching": {
+        "regex": "ないではいられない|ずにはいられない"
+      }
+    },
+    {
+      "id": "osore-ga-aru",
+      "pattern": "～恐れがある",
+      "level": "N2",
+      "category": "possibility",
+      "meaning": "there is a fear/risk that",
+      "explanation": "Indicates a possibility of something undesirable happening.",
+      "formation": "Verb dictionary form + 恐れがある",
+      "matching": {
+        "regex": "恐れがある|恐れがあります"
+      }
+    },
+    {
+      "id": "shidai",
+      "pattern": "～次第",
+      "level": "N2",
+      "category": "time",
+      "meaning": "as soon as / depends on",
+      "explanation": "Indicates something will happen immediately after an action, or that something depends on circumstances.",
+      "formation": "Verb stem + 次第 / Noun + 次第",
+      "matching": {
+        "regex": "[りきしちにみびぎ]次第|次第だ|次第で"
+      }
+    },
+    {
+      "id": "ijou",
+      "pattern": "～以上",
+      "level": "N2",
+      "category": "reason",
+      "meaning": "since / now that / as long as",
+      "explanation": "Indicates that given a certain situation, a certain conclusion naturally follows.",
+      "formation": "Verb た-form/dictionary form + 以上",
+      "matching": {
+        "regex": "[るうた]以上|以上は"
+      }
+    },
+    {
+      "id": "kara-niwa",
+      "pattern": "～からには",
+      "level": "N2",
+      "category": "reason",
+      "meaning": "now that / since / if indeed",
+      "explanation": "Expresses strong determination or natural consequence based on a situation.",
+      "formation": "Verb plain form + からには",
+      "matching": {
+        "regex": "からには|からは"
+      }
+    },
+    {
+      "id": "ba-hodo",
+      "pattern": "～ば～ほど",
+      "level": "N2",
+      "category": "correlation",
+      "meaning": "the more... the more",
+      "explanation": "Indicates that as one thing increases, another increases proportionally.",
+      "formation": "Verb ば-form + same verb dictionary form + ほど",
+      "matching": {
+        "regex": "ば[^、]*ほど"
+      }
+    },
+    {
+      "id": "ni-shitemo",
+      "pattern": "～にしても",
+      "level": "N2",
+      "category": "condition",
+      "meaning": "even if / even though",
+      "explanation": "Indicates that even under a certain condition, the result is the same.",
+      "formation": "Verb plain form + にしても",
+      "matching": {
+        "regex": "にしても|にせよ|にしろ"
+      }
+    },
+    {
+      "id": "koto-kara",
+      "pattern": "～ことから",
+      "level": "N2",
+      "category": "reason",
+      "meaning": "from the fact that / based on",
+      "explanation": "Indicates reasoning or conclusion based on a fact.",
+      "formation": "Verb/Adj plain form + ことから",
+      "matching": {
+        "regex": "[るうたい]ことから"
+      }
+    },
+    {
+      "id": "bakari-ka",
+      "pattern": "～ばかりか",
+      "level": "N2",
+      "category": "addition",
+      "meaning": "not only... but also",
+      "explanation": "Indicates that something exceeds what was mentioned.",
+      "formation": "Verb/Noun + ばかりか",
+      "matching": {
+        "regex": "ばかりか"
+      }
+    },
+    {
+      "id": "dokoro-ka",
+      "pattern": "～どころか",
+      "level": "N2",
+      "category": "emphasis",
+      "meaning": "far from / let alone",
+      "explanation": "Emphasizes that reality is far from expectations.",
+      "formation": "Verb/Noun + どころか",
+      "matching": {
+        "regex": "どころか"
+      }
+    },
+    {
+      "id": "te-naranai",
+      "pattern": "～てならない",
+      "level": "N2",
+      "category": "emotion",
+      "meaning": "extremely / cannot help but feel",
+      "explanation": "Expresses strong, uncontrollable emotion or feeling.",
+      "formation": "Verb て-form/I-adj + てならない",
+      "matching": {
+        "regex": "[でて]ならない|くてならない"
+      }
+    },
+    {
+      "id": "ppoi",
+      "pattern": "～っぽい",
+      "level": "N2",
+      "category": "tendency",
+      "meaning": "seems like / -ish / tends to",
+      "explanation": "Indicates a tendency or characteristic.",
+      "formation": "Noun/Verb stem + っぽい",
+      "matching": {
+        "regex": "っぽい"
+      }
+    },
+    {
+      "id": "gatai",
+      "pattern": "～がたい",
+      "level": "N2",
+      "category": "difficulty",
+      "meaning": "hard to / difficult to",
+      "explanation": "Indicates difficulty in doing something.",
+      "formation": "Verb stem + がたい",
+      "matching": {
+        "regex": "[りきしちにみびぎ]がたい"
+      }
+    },
+    {
+      "id": "tsutsu-aru",
+      "pattern": "～つつある",
+      "level": "N2",
+      "category": "progression",
+      "meaning": "be in the process of / be gradually",
+      "explanation": "Indicates gradual progression toward a state.",
+      "formation": "Verb stem + つつある",
+      "matching": {
+        "regex": "[りきしちにみびぎ]つつある"
+      }
+    },
+    {
+      "id": "ippou",
+      "pattern": "～一方",
+      "level": "N2",
+      "category": "contrast",
+      "meaning": "on the other hand / continue to",
+      "explanation": "Indicates contrast or continuous progression in one direction.",
+      "formation": "Verb dictionary form + 一方 / Noun + の一方",
+      "matching": {
+        "regex": "[るう]一方|一方で|一方だ"
+      }
+    },
+    {
+      "id": "hanmen",
+      "pattern": "～反面",
+      "level": "N2",
+      "category": "contrast",
+      "meaning": "on the other hand / while",
+      "explanation": "Indicates contrast between two aspects of the same thing.",
+      "formation": "Verb/Adj plain form + 反面",
+      "matching": {
+        "regex": "[るうたい]反面|反面で"
+      }
+    },
+    {
+      "id": "ni-tomonai",
+      "pattern": "～に伴い",
+      "level": "N2",
+      "category": "correlation",
+      "meaning": "along with / as / in proportion to",
+      "explanation": "Indicates that one thing changes in accordance with another.",
+      "formation": "Noun + に伴い / Verb + のに伴い",
+      "matching": {
+        "regex": "に伴い|に伴う|に伴って"
+      }
+    },
+    {
+      "id": "ni-hanshite",
+      "pattern": "～に反して",
+      "level": "N2",
+      "category": "contrast",
+      "meaning": "contrary to / against",
+      "explanation": "Indicates that something is contrary to expectations or norms.",
+      "formation": "Noun + に反して",
+      "matching": {
+        "regex": "に反して|に反する"
+      }
+    },
+    {
+      "id": "wo-moto-ni",
+      "pattern": "～をもとに",
+      "level": "N2",
+      "category": "basis",
+      "meaning": "based on / on the basis of",
+      "explanation": "Indicates the basis or foundation for something.",
+      "formation": "Noun + をもとに",
+      "matching": {
+        "regex": "をもとに|を基に|をもとにして"
+      }
+    },
+    {
+      "id": "wo-hajime",
+      "pattern": "～をはじめ",
+      "level": "N2",
+      "category": "listing",
+      "meaning": "starting with / not only... but also",
+      "explanation": "Lists examples starting with a representative one.",
+      "formation": "Noun + をはじめ",
+      "matching": {
+        "regex": "をはじめ|をはじめとして"
+      }
+    },
+    {
+      "id": "koto-nashini",
+      "pattern": "～ことなしに",
+      "level": "N1",
+      "category": "condition",
+      "meaning": "without doing",
+      "explanation": "Indicates doing something without a certain action or condition.",
+      "formation": "Verb dictionary form + ことなしに",
+      "matching": {
+        "regex": "ことなしに|ことなく"
+      }
+    },
+    {
+      "id": "nai-koto-niwa",
+      "pattern": "～ないことには",
+      "level": "N1",
+      "category": "condition",
+      "meaning": "unless / without",
+      "explanation": "Emphasizes that without a certain condition, something cannot happen.",
+      "formation": "Verb ない-form + ことには",
+      "matching": {
+        "regex": "ないことには"
+      }
+    },
+    {
+      "id": "n-bakari-ni",
+      "pattern": "～んばかりに",
+      "level": "N1",
+      "category": "manner",
+      "meaning": "as if about to / as though",
+      "explanation": "Describes an extreme state or action as if something is about to happen.",
+      "formation": "Verb dictionary form + んばかりに",
+      "matching": {
+        "regex": "[るう]んばかり|ばかりに"
+      }
+    },
+    {
+      "id": "ta-tokoro-de",
+      "pattern": "～たところで",
+      "level": "N1",
+      "category": "condition",
+      "meaning": "even if / even though",
+      "explanation": "Indicates that even if something happens, the result won't change.",
+      "formation": "Verb た-form + ところで",
+      "matching": {
+        "regex": "[た]ところで"
+      }
+    },
+    {
+      "id": "zu-jimai",
+      "pattern": "～ずじまい",
+      "level": "N1",
+      "category": "result",
+      "meaning": "ended up not doing",
+      "explanation": "Indicates that something was intended but never accomplished.",
+      "formation": "Verb ない-form (without い) + ずじまい",
+      "matching": {
+        "regex": "ずじまい"
+      }
+    },
+    {
+      "id": "toitta-tokoro-da",
+      "pattern": "～といったところだ",
+      "level": "N1",
+      "category": "estimation",
+      "meaning": "at most / about / approximately",
+      "explanation": "Gives an approximate amount or evaluation.",
+      "formation": "Amount/Evaluation + といったところだ",
+      "matching": {
+        "regex": "といったところ"
+      }
+    },
+    {
+      "id": "to-mo-naru-to",
+      "pattern": "～ともなると",
+      "level": "N1",
+      "category": "condition",
+      "meaning": "when it comes to / if it's the case that",
+      "explanation": "Indicates a special situation or condition.",
+      "formation": "Noun + ともなると / Verb plain form + ともなると",
+      "matching": {
+        "regex": "ともなると|ともなれば"
+      }
+    },
+    {
+      "id": "you-dewa",
+      "pattern": "～ようでは",
+      "level": "N1",
+      "category": "condition",
+      "meaning": "if / considering that",
+      "explanation": "Expresses criticism or concern about a situation.",
+      "formation": "Verb よう + では",
+      "matching": {
+        "regex": "ようでは"
+      }
+    },
+    {
+      "id": "you-mono-nara",
+      "pattern": "～ようものなら",
+      "level": "N1",
+      "category": "condition",
+      "meaning": "if by any chance / if one dares to",
+      "explanation": "Warns of severe consequences if something happens.",
+      "formation": "Verb よう + ものなら",
+      "matching": {
+        "regex": "ようものなら"
+      }
+    },
+    {
+      "id": "majiki",
+      "pattern": "～まじき",
+      "level": "N1",
+      "category": "prohibition",
+      "meaning": "unbecoming / should not",
+      "explanation": "Expresses strong prohibition or criticism (formal/literary).",
+      "formation": "Verb dictionary form + まじき",
+      "matching": {
+        "regex": "[るう]まじき|まじき"
+      }
+    },
+    {
+      "id": "kiwamaru",
+      "pattern": "～極まる",
+      "level": "N1",
+      "category": "degree",
+      "meaning": "extremely / utterly",
+      "explanation": "Expresses an extreme degree of a state.",
+      "formation": "Na-adjective stem + 極まる",
+      "matching": {
+        "regex": "極まる|極まりない"
+      }
+    },
+    {
+      "id": "katagata",
+      "pattern": "～かたがた",
+      "level": "N1",
+      "category": "purpose",
+      "meaning": "while / at the same time",
+      "explanation": "Indicates doing two things simultaneously (formal).",
+      "formation": "Noun + かたがた",
+      "matching": {
+        "regex": "かたがた"
+      }
+    },
+    {
+      "id": "katawara",
+      "pattern": "～かたわら",
+      "level": "N1",
+      "category": "parallel",
+      "meaning": "while / besides / in addition to",
+      "explanation": "Indicates doing something while maintaining another activity.",
+      "formation": "Verb dictionary form + かたわら / Noun + のかたわら",
+      "matching": {
+        "regex": "かたわら"
+      }
+    },
+    {
+      "id": "kaneru",
+      "pattern": "～かねる",
+      "level": "N1",
+      "category": "difficulty",
+      "meaning": "cannot / hard to / unable to",
+      "explanation": "Indicates inability or difficulty (often used to politely refuse).",
+      "formation": "Verb stem + かねる",
+      "matching": {
+        "regex": "かねる|かねます|かねました|かねない"
+      }
+    },
+    {
+      "id": "kirai-ga-aru",
+      "pattern": "～きらいがある",
+      "level": "N1",
+      "category": "tendency",
+      "meaning": "tend to / have a tendency to",
+      "explanation": "Indicates an undesirable tendency or inclination.",
+      "formation": "Verb dictionary form + きらいがある",
+      "matching": {
+        "regex": "きらいがある"
+      }
+    },
+    {
+      "id": "ni-taru",
+      "pattern": "～に足る",
+      "level": "N1",
+      "category": "value",
+      "meaning": "worth / deserve",
+      "explanation": "Indicates that something is worthy or deserving.",
+      "formation": "Verb dictionary form + に足る / Noun + に足る",
+      "matching": {
+        "regex": "に足る|に足りる"
+      }
+    },
+    {
+      "id": "ni-taeru",
+      "pattern": "～に堪える",
+      "level": "N1",
+      "category": "value",
+      "meaning": "worth / can withstand / unbearable",
+      "explanation": "Indicates worthiness or ability to endure.",
+      "formation": "Verb dictionary form + に堪える / Noun + に堪える",
+      "matching": {
+        "regex": "に堪える|に耐える"
+      }
+    },
+    {
+      "id": "nomi-narazu",
+      "pattern": "～のみならず",
+      "level": "N1",
+      "category": "addition",
+      "meaning": "not only... but also",
+      "explanation": "Formal expression for adding information (literary).",
+      "formation": "Noun + のみならず / Verb plain form + のみならず",
+      "matching": {
+        "regex": "のみならず"
+      }
+    },
+    {
+      "id": "to-aimatte",
+      "pattern": "～と相まって",
+      "level": "N1",
+      "category": "combination",
+      "meaning": "together with / combined with",
+      "explanation": "Indicates that multiple factors combine to produce a result.",
+      "formation": "Noun + と相まって",
+      "matching": {
+        "regex": "と相まって"
+      }
+    },
+    {
+      "id": "ni-kagiru",
+      "pattern": "～に限る",
+      "level": "N1",
+      "category": "preference",
+      "meaning": "nothing is better than / best to",
+      "explanation": "Expresses that something is the best option.",
+      "formation": "Noun/Verb dictionary form + に限る",
+      "matching": {
+        "regex": "に限る"
+      }
+    },
+    {
+      "id": "wo-keiki-ni",
+      "pattern": "～を契機に",
+      "level": "N1",
+      "category": "trigger",
+      "meaning": "taking the opportunity of / as a turning point",
+      "explanation": "Indicates that something serves as a catalyst for change.",
+      "formation": "Noun + を契機に",
+      "matching": {
+        "regex": "を契機に|を契機として"
+      }
+    },
+    {
+      "id": "wo-megutte",
+      "pattern": "～をめぐって",
+      "level": "N1",
+      "category": "topic",
+      "meaning": "concerning / regarding / over (dispute)",
+      "explanation": "Indicates the topic of discussion or dispute.",
+      "formation": "Noun + をめぐって",
+      "matching": {
+        "regex": "をめぐって|をめぐる"
+      }
+    },
+    {
+      "id": "ni-oite",
+      "pattern": "～において",
+      "level": "N1",
+      "category": "location",
+      "meaning": "in / at / on (formal)",
+      "explanation": "Formal way to indicate location or situation.",
+      "formation": "Noun + において",
+      "matching": {
+        "regex": "において|における"
+      }
+    },
+    {
+      "id": "wo-towazu",
+      "pattern": "～を問わず",
+      "level": "N1",
+      "category": "scope",
+      "meaning": "regardless of / whether or not",
+      "explanation": "Indicates that something applies universally regardless of conditions.",
+      "formation": "Noun + を問わず",
+      "matching": {
+        "regex": "を問わず"
       }
     }
   ]

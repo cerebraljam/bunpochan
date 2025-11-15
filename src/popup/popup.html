@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bunpochan - Starred Patterns</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="popup-header">
+      <h1>文法ちゃん</h1>
+      <p class="subtitle">Starred Grammar Patterns</p>
+    </header>
+
+    <div class="tabs">
+      <button class="tab-button active" data-tab="starred">
+        <span class="star-icon">★</span> Starred
+      </button>
+      <button class="tab-button" data-tab="settings">
+        <span class="settings-icon">⚙</span> Settings
+      </button>
+    </div>
+
+    <div class="tab-content" id="starred-tab">
+      <div id="starred-patterns-container">
+        <div class="loading">Loading starred patterns...</div>
+      </div>
+      <div class="empty-state" id="empty-state" style="display: none;">
+        <p>No starred patterns yet!</p>
+        <p class="help-text">Star grammar patterns while reading by clicking the ★ button in the popup.</p>
+      </div>
+    </div>
+
+    <div class="tab-content" id="settings-tab" style="display: none;">
+      <div class="settings-content">
+        <h3>Extension Status</h3>
+        <div class="extension-toggle">
+          <label class="toggle-switch">
+            <input type="checkbox" id="extension-enabled" checked>
+            <span class="slider"></span>
+          </label>
+          <div class="toggle-label">
+            <span class="toggle-status" id="status-text">Enabled</span>
+            <span class="toggle-description">Turn off to disable grammar detection</span>
+          </div>
+        </div>
+
+        <h3>JLPT Level Settings</h3>
+        <div class="level-toggles">
+          <div class="toggle-item">
+            <label>
+              <input type="checkbox" id="toggle-n5" class="level-checkbox">
+              <span class="toggle-text">
+                <span class="level-badge n5">N5</span> Beginner
+              </span>
+            </label>
+          </div>
+          <div class="toggle-item">
+            <label>
+              <input type="checkbox" id="toggle-n4" class="level-checkbox">
+              <span class="toggle-text">
+                <span class="level-badge n4">N4</span> Elementary
+              </span>
+            </label>
+          </div>
+          <div class="toggle-item">
+            <label>
+              <input type="checkbox" id="toggle-n3" class="level-checkbox">
+              <span class="toggle-text">
+                <span class="level-badge n3">N3</span> Intermediate
+              </span>
+            </label>
+          </div>
+          <div class="toggle-item">
+            <label>
+              <input type="checkbox" id="toggle-n2" class="level-checkbox">
+              <span class="toggle-text">
+                <span class="level-badge n2">N2</span> Upper Intermediate
+              </span>
+            </label>
+          </div>
+          <div class="toggle-item">
+            <label>
+              <input type="checkbox" id="toggle-n1" class="level-checkbox">
+              <span class="toggle-text">
+                <span class="level-badge n1">N1</span> Advanced
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="popup-footer">
+      <p>Press Ctrl+Shift over Japanese text to analyze grammar</p>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -75,7 +75,7 @@ function extractSentenceAtCursor(x, y) {
 /**
  * Create and display popup with grammar analysis
  */
-function showPopup(x, y, grammarPoints) {
+async function showPopup(x, y, grammarPoints, sentence) {
   // Remove existing popup
   removePopup();
 
@@ -91,13 +91,28 @@ function showPopup(x, y, grammarPoints) {
     content += '<div class="bunpochan-no-results">No grammar patterns detected in this sentence.</div>';
   } else {
     content += '<div class="bunpochan-results">';
+
+    // Get currently starred patterns
+    const starredPatterns = await getStarredPatterns();
+
     grammarPoints.forEach((point, index) => {
+      const patternId = point.id || `${point.pattern}-${point.level}`;
+      const isStarred = starredPatterns.hasOwnProperty(patternId);
+      const starClass = isStarred ? 'starred' : '';
+      const starIcon = isStarred ? '★' : '☆';
+
       content += `
-        <div class="grammar-point">
-          <div class="pattern-title">${point.pattern} <span class="level-badge">${point.level}</span></div>
-          <div class="pattern-meaning">${point.meaning}</div>
-          ${point.explanation ? `<div class="pattern-explanation">${point.explanation}</div>` : ''}
-          ${point.formation ? `<div class="pattern-formation"><strong>Formation:</strong> ${point.formation}</div>` : ''}
+        <div class="grammar-point" data-pattern-id="${escapeHtml(patternId)}" data-sentence="${escapeHtml(sentence)}">
+          <div class="pattern-header">
+            <div class="pattern-title-group">
+              <span class="pattern-title">${escapeHtml(point.pattern)}</span>
+              <span class="level-badge ${point.level.toLowerCase()}">${point.level}</span>
+            </div>
+            <button class="star-button ${starClass}" data-pattern-id="${escapeHtml(patternId)}" title="${isStarred ? 'Unstar' : 'Star'} this pattern">${starIcon}</button>
+          </div>
+          <div class="pattern-meaning">${escapeHtml(point.meaning)}</div>
+          ${point.explanation ? `<div class="pattern-explanation">${escapeHtml(point.explanation)}</div>` : ''}
+          ${point.formation ? `<div class="pattern-formation"><strong>Formation:</strong> ${escapeHtml(point.formation)}</div>` : ''}
         </div>
       `;
     });
@@ -105,6 +120,33 @@ function showPopup(x, y, grammarPoints) {
   }
 
   popup.innerHTML = content;
+
+  // Add star button event listeners
+  popup.querySelectorAll('.star-button').forEach(button => {
+    button.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const patternId = button.dataset.patternId;
+      const grammarPointEl = button.closest('.grammar-point');
+      const sentence = grammarPointEl.dataset.sentence;
+
+      // Find the pattern data
+      const point = grammarPoints.find(p => (p.id || `${p.pattern}-${p.level}`) === patternId);
+
+      if (button.classList.contains('starred')) {
+        // Unstar
+        await unstarPattern(patternId);
+        button.classList.remove('starred');
+        button.textContent = '☆';
+        button.title = 'Star this pattern';
+      } else {
+        // Star
+        await starPattern(patternId, point, sentence);
+        button.classList.add('starred');
+        button.textContent = '★';
+        button.title = 'Unstar this pattern';
+      }
+    });
+  });
 
   // Position popup near cursor
   document.body.appendChild(popup);
@@ -137,6 +179,73 @@ function showPopup(x, y, grammarPoints) {
   setTimeout(() => {
     document.addEventListener('click', handleOutsideClick);
   }, 100);
+}
+
+/**
+ * Escape HTML to prevent XSS
+ */
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+/**
+ * Get starred patterns from storage
+ */
+async function getStarredPatterns() {
+  try {
+    const result = await chrome.storage.sync.get({ starredPatterns: {} });
+    return result.starredPatterns;
+  } catch (error) {
+    console.error('Error getting starred patterns:', error);
+    return {};
+  }
+}
+
+/**
+ * Star a pattern
+ */
+async function starPattern(patternId, point, sentence) {
+  try {
+    const starredPatterns = await getStarredPatterns();
+
+    if (!starredPatterns[patternId]) {
+      starredPatterns[patternId] = {
+        pattern: point.pattern,
+        level: point.level,
+        meaning: point.meaning,
+        examples: []
+      };
+    }
+
+    // Add sentence to examples (max 5)
+    if (!starredPatterns[patternId].examples.includes(sentence)) {
+      starredPatterns[patternId].examples.push(sentence);
+      if (starredPatterns[patternId].examples.length > 5) {
+        starredPatterns[patternId].examples = starredPatterns[patternId].examples.slice(-5);
+      }
+    }
+
+    await chrome.storage.sync.set({ starredPatterns });
+    console.log('Pattern starred:', patternId);
+  } catch (error) {
+    console.error('Error starring pattern:', error);
+  }
+}
+
+/**
+ * Unstar a pattern
+ */
+async function unstarPattern(patternId) {
+  try {
+    const starredPatterns = await getStarredPatterns();
+    delete starredPatterns[patternId];
+    await chrome.storage.sync.set({ starredPatterns });
+    console.log('Pattern unstarred:', patternId);
+  } catch (error) {
+    console.error('Error unstarring pattern:', error);
+  }
 }
 
 /**
@@ -193,6 +302,17 @@ document.addEventListener('mousemove', (e) => {
 document.addEventListener('keydown', async (e) => {
   // Check for Ctrl+Shift (both keys pressed)
   if (e.ctrlKey && e.shiftKey && !e.altKey && !e.metaKey) {
+    // Check if extension is enabled
+    try {
+      const result = await chrome.storage.sync.get({ extensionEnabled: true });
+      if (!result.extensionEnabled) {
+        console.log('Bunpochan is disabled');
+        return;
+      }
+    } catch (error) {
+      console.error('Error checking extension status:', error);
+    }
+
     // Prevent default behavior
     e.preventDefault();
 
@@ -218,14 +338,14 @@ document.addEventListener('keydown', async (e) => {
 
       if (response && response.success) {
         // Display results in popup
-        showPopup(mouseX, mouseY, response.grammarPoints);
+        showPopup(mouseX, mouseY, response.grammarPoints, sentenceData.text);
       } else {
         // Show error
-        showPopup(mouseX, mouseY, []);
+        showPopup(mouseX, mouseY, [], sentenceData.text);
       }
     } catch (error) {
       console.error('Error analyzing sentence:', error);
-      showPopup(mouseX, mouseY, []);
+      showPopup(mouseX, mouseY, [], sentenceData.text);
     }
   }
 });
