@@ -22,9 +22,10 @@
       "meaning": "to be (casual)",
       "explanation": "Casual copula used to state what something is. Less formal than です.",
       "formation": "Noun/Na-adjective + だ",
+      "matchingStrategy": "pos-based",
       "matching": {
-        "substring": "だ",
-        "regex": "(?<!わけ|はず|もの|そう|みたい|らしい|ばかり|のだ|けだ|んだ|ずだ)[^ん]だ(?![っと])"
+        "pos": ["助動詞"],
+        "surface": "だ"
       }
     },
     {
@@ -1592,8 +1593,10 @@
       "meaning": "said / called / that (casual quotation)",
       "explanation": "Casual quotation marker (casual form of と言う).",
       "formation": "Statement/Name + って",
+      "matchingStrategy": "pos-based",
       "matching": {
-        "regex": "って[い言]|って[はの]|って"
+        "pos": ["助詞"],
+        "surface": "って"
       }
     },
     {
@@ -1644,8 +1647,10 @@
       "meaning": "don't (casual command)",
       "explanation": "Casual prohibition (casual form of ～ないで).",
       "formation": "Verb dictionary form + な",
+      "matchingStrategy": "pos-based",
       "matching": {
-        "regex": "[るうく]な(?![いくのでにもがをはらど])"
+        "pos": ["助詞"],
+        "surface": "な"
       }
     },
     {
