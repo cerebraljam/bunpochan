@@ -159,8 +159,10 @@
       "meaning": "topic marker",
       "explanation": "Marks the topic of the sentence.",
       "formation": "Noun + は",
+      "matchingStrategy": "pos-based",
       "matching": {
-        "substring": "は"
+        "pos": ["助詞"],
+        "surface": "は"
       }
     },
     {
@@ -171,8 +173,10 @@
       "meaning": "subject marker",
       "explanation": "Marks the subject of the sentence or indicates contrast.",
       "formation": "Noun + が",
+      "matchingStrategy": "pos-based",
       "matching": {
-        "substring": "が"
+        "pos": ["助詞"],
+        "surface": "が"
       }
     },
     {
@@ -183,8 +187,10 @@
       "meaning": "direct object marker",
       "explanation": "Marks the direct object of an action.",
       "formation": "Noun + を",
+      "matchingStrategy": "pos-based",
       "matching": {
-        "substring": "を"
+        "pos": ["助詞"],
+        "surface": "を"
       }
     },
     {
@@ -195,8 +201,10 @@
       "meaning": "location/time/indirect object marker",
       "explanation": "Indicates location, time, direction, or indirect object.",
       "formation": "Noun + に",
+      "matchingStrategy": "pos-based",
       "matching": {
-        "substring": "に"
+        "pos": ["助詞"],
+        "surface": "に"
       }
     },
     {
@@ -207,9 +215,10 @@
       "meaning": "location of action/means marker",
       "explanation": "Indicates where an action takes place or the means by which something is done.",
       "formation": "Noun + で",
+      "matchingStrategy": "pos-based",
       "matching": {
-        "substring": "で",
-        "regex": "で(?![す])"
+        "pos": ["助詞"],
+        "surface": "で"
       }
     },
     {
@@ -220,8 +229,10 @@
       "meaning": "with/and",
       "explanation": "Indicates accompaniment or lists items exhaustively.",
       "formation": "Noun + と",
+      "matchingStrategy": "pos-based",
       "matching": {
-        "substring": "と"
+        "pos": ["助詞"],
+        "surface": "と"
       }
     },
     {
@@ -232,8 +243,10 @@
       "meaning": "question marker / or",
       "explanation": "Forms questions or indicates choice (or).",
       "formation": "Sentence + か",
+      "matchingStrategy": "pos-based",
       "matching": {
-        "substring": "か"
+        "pos": ["助詞"],
+        "surface": "か"
       }
     },
     {
@@ -244,8 +257,10 @@
       "meaning": "because / so",
       "explanation": "Indicates reason or cause.",
       "formation": "Clause + から",
+      "matchingStrategy": "pos-based",
       "matching": {
-        "substring": "から"
+        "pos": ["助詞"],
+        "surface": "から"
       }
     },
     {

@@ -3,9 +3,17 @@
 
 console.log('Bunpochan background service worker loaded');
 
+// Load kuromoji.js library
+importScripts('src/lib/kuromoji/kuromoji.js');
+
 // Grammar database cache
 let grammarDatabase = null;
 let userSettings = null;
+
+// Kuromoji tokenizer cache
+let tokenizer = null;
+let tokenizerReady = false;
+let tokenizerInitializing = false;
 
 /**
  * Load grammar database
@@ -74,12 +82,164 @@ async function loadUserSettings() {
 }
 
 /**
+ * Initialize kuromoji tokenizer (with caching)
+ * This is called lazily on first use to avoid blocking extension startup
+ */
+async function initializeTokenizer() {
+  // Return cached tokenizer if already initialized
+  if (tokenizerReady && tokenizer) {
+    return tokenizer;
+  }
+
+  // Wait if already initializing
+  if (tokenizerInitializing) {
+    return new Promise((resolve, reject) => {
+      const checkInterval = setInterval(() => {
+        if (tokenizerReady) {
+          clearInterval(checkInterval);
+          resolve(tokenizer);
+        } else if (!tokenizerInitializing) {
+          clearInterval(checkInterval);
+          reject(new Error('Tokenizer initialization failed'));
+        }
+      }, 100);
+    });
+  }
+
+  tokenizerInitializing = true;
+
+  try {
+    return await new Promise((resolve, reject) => {
+      const dicPath = chrome.runtime.getURL('src/lib/kuromoji/dict');
+      console.log('Initializing kuromoji tokenizer from:', dicPath);
+
+      kuromoji.builder({ dicPath: dicPath }).build((err, tok) => {
+        if (err) {
+          console.error('Kuromoji initialization error:', err);
+          tokenizerInitializing = false;
+          reject(err);
+        } else {
+          tokenizer = tok;
+          tokenizerReady = true;
+          tokenizerInitializing = false;
+          console.log('Kuromoji tokenizer initialized successfully');
+          resolve(tok);
+        }
+      });
+    });
+  } catch (error) {
+    tokenizerInitializing = false;
+    console.error('Failed to initialize tokenizer:', error);
+    throw error;
+  }
+}
+
+/**
+ * Match pattern using POS (Part-of-Speech) tagging with kuromoji
+ * Used for particles and other patterns that need grammatical context
+ */
+function matchWithPOS(tokens, pattern) {
+  if (!tokens || !pattern.matching) {
+    return null;
+  }
+
+  const matching = pattern.matching;
+  const requiredPOS = matching.pos; // Array of acceptable POS tags
+  const surface = matching.surface; // The surface form to match
+
+  // Find all tokens that match both POS tag and surface form
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i];
+
+    // Check if POS tag matches (e.g., "助詞" for particles)
+    const posMatches = requiredPOS && requiredPOS.includes(token.pos);
+
+    // Check if surface form matches
+    const surfaceMatches = surface === token.surface_form;
+
+    if (posMatches && surfaceMatches) {
+      return {
+        text: token.surface_form,
+        position: token.word_position || i,
+        confidence: 'high' // POS-based matching has high confidence
+      };
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Match pattern using regex or substring matching
+ * Used for most grammar patterns that don't need POS context
+ */
+function matchWithRegex(sentence, pattern) {
+  const matching = pattern.matching;
+
+  // Try regex matching if available
+  if (matching && matching.regex) {
+    try {
+      const regex = new RegExp(matching.regex, 'g');
+      const match = regex.exec(sentence);
+
+      if (match) {
+        return {
+          text: match[0],
+          position: match.index,
+          confidence: 'medium'
+        };
+      }
+    } catch (error) {
+      console.error('Regex error for pattern', pattern.pattern, error);
+    }
+  }
+
+  // Try simple substring matching
+  if (matching && matching.substring) {
+    const index = sentence.indexOf(matching.substring);
+    if (index !== -1) {
+      return {
+        text: matching.substring,
+        position: index,
+        confidence: 'low'
+      };
+    }
+  }
+
+  // Try multiple possible forms
+  if (matching && matching.forms) {
+    for (const form of matching.forms) {
+      const index = sentence.indexOf(form);
+      if (index !== -1) {
+        return {
+          text: form,
+          position: index,
+          confidence: 'low'
+        };
+      }
+    }
+  }
+
+  return null;
+}
+
+/**
  * Analyze sentence for grammar patterns
  */
 async function analyzeSentence(sentence) {
   // Load grammar database and settings
   const db = await loadGrammarDatabase();
   const settings = await loadUserSettings();
+
+  // Initialize tokenizer if needed (for POS-based matching)
+  let tokens = null;
+  try {
+    const tok = await initializeTokenizer();
+    tokens = tok.tokenize(sentence);
+    console.log('Tokenized sentence:', tokens.map(t => `${t.surface_form}(${t.pos})`).join(' '));
+  } catch (error) {
+    console.warn('Tokenizer not available, falling back to regex-only matching:', error);
+  }
 
   const detectedPatterns = [];
 
@@ -99,8 +259,18 @@ async function analyzeSentence(sentence) {
       }
     }
 
-    // Try to match pattern
-    const matches = matchPattern(sentence, pattern);
+    // Route to appropriate matching strategy
+    let matches = null;
+    const strategy = pattern.matchingStrategy || 'regex';
+
+    if (strategy === 'pos-based' && tokens) {
+      // Use POS-based matching for particles and context-sensitive patterns
+      matches = matchWithPOS(tokens, pattern);
+    } else {
+      // Use regex/substring matching for other patterns
+      matches = matchWithRegex(sentence, pattern);
+    }
+
     if (matches) {
       detectedPatterns.push({
         id: pattern.id,
@@ -127,56 +297,6 @@ async function analyzeSentence(sentence) {
   return detectedPatterns;
 }
 
-/**
- * Match a grammar pattern against sentence
- */
-function matchPattern(sentence, pattern) {
-  // Get matching rules
-  const matching = pattern.matching;
-
-  // Try regex matching if available
-  if (matching && matching.regex) {
-    try {
-      const regex = new RegExp(matching.regex, 'g');
-      const match = regex.exec(sentence);
-
-      if (match) {
-        return {
-          text: match[0],
-          position: match.index
-        };
-      }
-    } catch (error) {
-      console.error('Regex error for pattern', pattern.pattern, error);
-    }
-  }
-
-  // Try simple substring matching
-  if (matching && matching.substring) {
-    const index = sentence.indexOf(matching.substring);
-    if (index !== -1) {
-      return {
-        text: matching.substring,
-        position: index
-      };
-    }
-  }
-
-  // Try multiple possible forms
-  if (matching && matching.forms) {
-    for (const form of matching.forms) {
-      const index = sentence.indexOf(form);
-      if (index !== -1) {
-        return {
-          text: form,
-          position: index
-        };
-      }
-    }
-  }
-
-  return null;
-}
 
 /**
  * Handle messages from content script
