@@ -557,7 +557,7 @@
       "explanation": "Expresses a decision made by the speaker or subject.",
       "formation": "Verb dictionary form + ことにする",
       "matching": {
-        "regex": "ことにする|ことにした|ことにします"
+        "regex": "ことにする|ことにした|ことにします|ことにしました"
       }
     },
     {
@@ -569,7 +569,7 @@
       "explanation": "Expresses a decision made by others or circumstances, not by the speaker.",
       "formation": "Verb dictionary form + ことになる",
       "matching": {
-        "regex": "ことになる|ことになった|ことになります"
+        "regex": "ことになる|ことになった|ことになります|ことになりました"
       }
     },
     {
