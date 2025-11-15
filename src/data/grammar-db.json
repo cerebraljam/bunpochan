@@ -1943,20 +1943,6 @@
       "patternDisplay": "～させられる (<ruby>使役受身<rt>しえきうけみ</rt></ruby>)"
     },
     {
-      "id": "potential-rareru-eru",
-      "pattern": "～れる/～える (可能)",
-      "level": "N4",
-      "category": "potential",
-      "register": "neutral",
-      "meaning": "potential form / can do",
-      "explanation": "Indicates ability to do something.",
-      "formation": "Verb potential form",
-      "matching": {
-        "regex": "[えけせてねめべれげ]る"
-      },
-      "patternDisplay": "～れる/～える (<ruby>可能<rt>かのう</rt></ruby>)"
-    },
-    {
       "id": "volitional-you-mashou",
       "pattern": "～よう/～ましょう (意向)",
       "level": "N5",
