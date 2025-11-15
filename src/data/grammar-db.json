@@ -1785,8 +1785,12 @@
       "meaning": "emphasis (feminine)",
       "explanation": "Feminine casual emphasis particle.",
       "formation": "Statement + わ",
+      "matchingStrategy": "pos-based",
       "matching": {
-        "regex": "(?<![だい])[るうた]わ(?![ないけ])|だわ(?![ける])"
+        "pos": [
+          "助詞"
+        ],
+        "surface": "わ"
       }
     },
     {
