@@ -1428,7 +1428,7 @@
       "explanation": "Indicates worthiness or ability to endure.",
       "formation": "Verb dictionary form + に堪える / Noun + に堪える",
       "matching": {
-        "regex": "に堪える|に耐える"
+        "regex": "に堪えない|に堪える|に耐えない|に耐える"
       },
       "patternDisplay": "～に<ruby>堪<rt>た</rt></ruby>える"
     },
