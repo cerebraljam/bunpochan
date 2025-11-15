@@ -1214,6 +1214,18 @@
       }
     },
     {
+      "id": "nashini",
+      "pattern": "～なしに/～なしで",
+      "level": "N1",
+      "category": "condition",
+      "meaning": "without",
+      "explanation": "Indicates doing something without a certain thing or condition (formal).",
+      "formation": "Noun + なしに/なしで/なしには",
+      "matching": {
+        "regex": "なしには|なしに|なしで"
+      }
+    },
+    {
       "id": "koto-nashini",
       "pattern": "～ことなしに",
       "level": "N1",
