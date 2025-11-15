@@ -167,6 +167,7 @@ function matchWithPOS(tokens, pattern) {
 
   const matching = pattern.matching;
   const requiredPOS = matching.pos; // Array of acceptable POS tags
+  const requiredPOSDetail1 = matching.pos_detail_1; // Optional detailed POS tag
   const surface = matching.surface; // The surface form to match
 
   // Find all tokens that match both POS tag and surface form
@@ -176,10 +177,15 @@ function matchWithPOS(tokens, pattern) {
     // Check if POS tag matches (e.g., "助詞" for particles)
     const posMatches = requiredPOS && requiredPOS.includes(token.pos);
 
+    // Check if detailed POS tag matches (optional, for disambiguation)
+    // e.g., "格助詞" (case particle) vs "接続助詞" (conjunctive particle)
+    const posDetail1Matches = !requiredPOSDetail1 ||
+                              (requiredPOSDetail1 && requiredPOSDetail1.includes(token.pos_detail_1));
+
     // Check if surface form matches
     const surfaceMatches = surface === token.surface_form;
 
-    if (posMatches && surfaceMatches) {
+    if (posMatches && posDetail1Matches && surfaceMatches) {
       return {
         text: token.surface_form,
         position: token.word_position || i,
