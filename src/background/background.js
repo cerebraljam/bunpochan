@@ -111,25 +111,47 @@ async function initializeTokenizer() {
   try {
     return await new Promise((resolve, reject) => {
       const dicPath = chrome.runtime.getURL('src/lib/kuromoji/dict');
-      console.log('Initializing kuromoji tokenizer from:', dicPath);
+      console.log('[Kuromoji] Step 1/3: Starting initialization...');
+      console.log('[Kuromoji] Dictionary path:', dicPath);
+
+      const startTime = Date.now();
 
       kuromoji.builder({ dicPath: dicPath }).build((err, tok) => {
+        const elapsedTime = ((Date.now() - startTime) / 1000).toFixed(2);
+
         if (err) {
-          console.error('Kuromoji initialization error:', err);
+          console.error('[Kuromoji] ❌ Initialization failed after', elapsedTime, 'seconds');
+          console.error('[Kuromoji] Error details:', err);
           tokenizerInitializing = false;
           reject(err);
         } else {
           tokenizer = tok;
           tokenizerReady = true;
           tokenizerInitializing = false;
-          console.log('Kuromoji tokenizer initialized successfully');
+          console.log('[Kuromoji] ✓ Initialization complete in', elapsedTime, 'seconds');
+          console.log('[Kuromoji] Tokenizer ready for use');
           resolve(tok);
         }
       });
+
+      // Log progress after 1 second
+      setTimeout(() => {
+        if (tokenizerInitializing) {
+          console.log('[Kuromoji] Step 2/3: Loading dictionary files (~17MB)...');
+        }
+      }, 1000);
+
+      // Warn if taking too long
+      setTimeout(() => {
+        if (tokenizerInitializing) {
+          console.warn('[Kuromoji] Still loading... This is taking longer than expected.');
+          console.warn('[Kuromoji] Check browser console for errors.');
+        }
+      }, 5000);
     });
   } catch (error) {
     tokenizerInitializing = false;
-    console.error('Failed to initialize tokenizer:', error);
+    console.error('[Kuromoji] Fatal error during initialization:', error);
     throw error;
   }
 }
@@ -234,11 +256,13 @@ async function analyzeSentence(sentence) {
   // Initialize tokenizer if needed (for POS-based matching)
   let tokens = null;
   try {
+    console.log('[Analysis] Initializing tokenizer...');
     const tok = await initializeTokenizer();
+    console.log('[Analysis] Step 3/3: Tokenizing sentence...');
     tokens = tok.tokenize(sentence);
-    console.log('Tokenized sentence:', tokens.map(t => `${t.surface_form}(${t.pos})`).join(' '));
+    console.log('[Analysis] ✓ Tokenized:', tokens.map(t => `${t.surface_form}(${t.pos})`).join(' '));
   } catch (error) {
-    console.warn('Tokenizer not available, falling back to regex-only matching:', error);
+    console.warn('[Analysis] ⚠ Tokenizer unavailable, using regex-only matching:', error);
   }
 
   const detectedPatterns = [];

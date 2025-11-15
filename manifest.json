@@ -39,7 +39,8 @@
       "resources": [
         "src/popup/popup.html",
         "src/popup/popup.css",
-        "src/lib/kuromoji/*"
+        "src/lib/kuromoji/kuromoji.js",
+        "src/lib/kuromoji/dict/*.gz"
       ],
       "matches": ["<all_urls>"]
     }
