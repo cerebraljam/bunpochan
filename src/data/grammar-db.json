@@ -1157,9 +1157,9 @@
       "category": "contrast",
       "meaning": "on the other hand / while",
       "explanation": "Indicates contrast between two aspects of the same thing.",
-      "formation": "Verb/Adj plain form + 反面",
+      "formation": "Verb/Adj plain form + 反面 / Na-adj + な反面",
       "matching": {
-        "regex": "[るうたい]反面|反面で"
+        "regex": "[るうたいな]反面|反面で"
       },
       "patternDisplay": "～<ruby>反面<rt>はんめん</rt></ruby>"
     },
