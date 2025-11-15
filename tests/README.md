@@ -70,16 +70,33 @@ One or more expected patterns were not detected. This indicates:
 
 ## Running Tests via Command Line
 
-You can also run tests programmatically:
+**⚠️ Important:** The test runner requires a web server to avoid CORS issues when loading the grammar database.
 
+### Easy Method (Recommended)
 ```bash
-# Open in browser
-open test-runner.html
-
-# Or use a simple HTTP server
-python3 -m http.server 8000
-# Then navigate to http://localhost:8000/test-runner.html
+cd tests
+./run-tests.sh
 ```
+This script will:
+- Start a local web server on port 8000
+- Automatically open the test runner in your browser
+- Press Ctrl+C to stop when done
+
+### Manual Method
+```bash
+# From project root
+cd /home/user/bunpochan
+python3 -m http.server 8000
+
+# Then navigate to:
+# http://localhost:8000/tests/test-runner.html
+```
+
+### Troubleshooting
+If you get **0% success rate**, it means the grammar database isn't loading:
+1. Make sure you're running via a web server (not opening the file directly)
+2. Check the browser console for "Loaded grammar database" message
+3. If you see CORS errors, use the run-tests.sh script
 
 ## Continuous Testing
 

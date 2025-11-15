@@ -201,9 +201,39 @@ const testCases = [
 // Load grammar database
 async function loadGrammarDatabase() {
   try {
-    const response = await fetch('../src/data/grammar-db.json');
-    const data = await response.json();
-    return data.patterns;
+    // Try multiple paths in case of different directory structures
+    const paths = [
+      '../src/data/grammar-db.json',
+      './src/data/grammar-db.json',
+      'src/data/grammar-db.json'
+    ];
+
+    let data = null;
+    let lastError = null;
+
+    for (const path of paths) {
+      try {
+        const response = await fetch(path);
+        if (response.ok) {
+          data = await response.json();
+          console.log(`✓ Loaded grammar database from: ${path}`);
+          console.log(`✓ Found ${data.patterns.length} patterns\n`);
+          return data.patterns;
+        }
+      } catch (error) {
+        lastError = error;
+      }
+    }
+
+    console.error('❌ Error loading grammar database from any path');
+    console.error('Last error:', lastError);
+    console.error('\n⚠️  CORS Error? Try one of these solutions:');
+    console.error('   1. Run a local web server:');
+    console.error('      cd /home/user/bunpochan');
+    console.error('      python3 -m http.server 8000');
+    console.error('      Then open: http://localhost:8000/tests/test-runner.html');
+    console.error('   2. Use the Chrome extension directly to test\n');
+    return [];
   } catch (error) {
     console.error('Error loading grammar database:', error);
     return [];
