@@ -907,6 +907,18 @@
       }
     },
     {
+      "id": "shika-nai",
+      "pattern": "～しかない",
+      "level": "N2",
+      "category": "limitation",
+      "meaning": "have no choice but to / only option",
+      "explanation": "Indicates that there is no alternative or only one option available.",
+      "formation": "Noun/Verb dictionary form + しかない",
+      "matching": {
+        "regex": "しかない|しかありません"
+      }
+    },
+    {
       "id": "wake-ni-wa-ikanai",
       "pattern": "～わけにはいかない",
       "level": "N2",
