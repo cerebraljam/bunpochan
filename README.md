@@ -8,7 +8,7 @@ A Chrome extension that helps Japanese learners understand grammar patterns whil
 
 ## 🌟 Features
 
-- **On-demand Grammar Analysis**: Press `Ctrl+Shift` while hovering over Japanese text to see grammar patterns
+- **On-demand Grammar Analysis**: Press `Ctrl+Alt` while hovering over Japanese text to see grammar patterns
 - **JLPT-Based Patterns**: Covers N5 and N4 grammar patterns (50+ patterns included)
 - **Customizable Levels**: Toggle which JLPT levels to display in settings
 - **Non-intrusive**: Only activates when you need it, like Yomitan for vocabulary
@@ -59,7 +59,7 @@ Toggle the **Developer mode** switch in the top-right corner of the extensions p
 
 2. **Hover your mouse over a Japanese sentence**
 
-3. **Press `Ctrl+Shift` together**
+3. **Press `Ctrl+Alt` together** (Ctrl+Option on Mac)
 
 4. **A popup appears** showing all grammar patterns detected in that sentence!
 
@@ -67,7 +67,7 @@ Toggle the **Developer mode** switch in the top-right corner of the extensions p
 
 When you hover over: `私は日本語を勉強しています。`
 
-And press `Ctrl+Shift`, you'll see:
+And press `Ctrl+Alt`, you'll see:
 - **～を** (N5) - Direct object marker
 - **～ています** (N5) - Present progressive (polite)
 
@@ -189,7 +189,7 @@ Then reload the extension!
 
 ### Current Version (0.1.0 - MVP)
 - ✅ Basic Chrome extension structure
-- ✅ Ctrl+Shift activation
+- ✅ Ctrl+Alt activation
 - ✅ Sentence extraction
 - ✅ Pattern matching engine
 - ✅ Grammar database (N5-N4)

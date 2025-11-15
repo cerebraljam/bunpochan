@@ -1,5 +1,5 @@
 // Bunpochan Content Script
-// Handles Ctrl+Shift detection, sentence extraction, and popup display
+// Handles Ctrl+Alt detection, sentence extraction, and popup display
 
 let isCtrlShiftPressed = false;
 let currentPopup = null;
@@ -289,7 +289,7 @@ function showLoading(x, y) {
 }
 
 /**
- * Handle keydown events for Ctrl+Shift detection
+ * Handle keydown events for Ctrl+Alt detection
  */
 let mouseX = 0;
 let mouseY = 0;
@@ -300,8 +300,8 @@ document.addEventListener('mousemove', (e) => {
 });
 
 document.addEventListener('keydown', async (e) => {
-  // Check for Ctrl+Shift (both keys pressed)
-  if (e.ctrlKey && e.shiftKey && !e.altKey && !e.metaKey) {
+  // Check for Ctrl+Alt (both keys pressed)
+  if (e.ctrlKey && e.altKey && !e.shiftKey && !e.metaKey) {
     // Check if extension is enabled
     try {
       const result = await chrome.storage.sync.get({ extensionEnabled: true });
