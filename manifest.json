@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Bunpochan - Japanese Grammar Assistant",
   "version": "0.1.0",
-  "description": "On-demand Japanese grammar pattern analyzer for JLPT learners. Press Ctrl+Shift over Japanese text to see grammar explanations.",
+  "description": "On-demand Japanese grammar pattern analyzer for JLPT learners. Press Ctrl+Alt over Japanese text to see grammar explanations.",
   "permissions": [
     "storage",
     "activeTab"

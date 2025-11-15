@@ -31,7 +31,7 @@ A collection of Japanese sentences organized by JLPT level for manual testing of
 **How to use:**
 1. Load the extension in Chrome
 2. Open `sample-texts.html`
-3. Press `Ctrl+Shift` over any Japanese sentence
+3. Press `Ctrl+Alt` over any Japanese sentence
 4. Verify that the expected grammar patterns are detected
 
 ## Adding New Tests
