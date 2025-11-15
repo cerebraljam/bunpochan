@@ -51,29 +51,30 @@ def generate_icon(size):
     font = None
 
     font_paths = [
+        # Linux fonts (verified to exist)
+        '/usr/share/fonts/opentype/ipafont-gothic/ipag.ttf',
+        '/usr/share/fonts/truetype/fonts-japanese-gothic.ttf',
+        '/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc',
+        # Other common locations
         '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc',
         '/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc',
         '/System/Library/Fonts/ヒラギノ角ゴシック W3.ttc',
         '/System/Library/Fonts/Hiragino Sans GB.ttc',
         'C:\\Windows\\Fonts\\msgothic.ttc',
-        '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',
     ]
 
     for font_path in font_paths:
         try:
             if os.path.exists(font_path):
                 font = ImageFont.truetype(font_path, font_size)
+                print(f'  Using font: {font_path}')
                 break
-        except:
+        except Exception as e:
+            print(f'  Failed to load {font_path}: {e}')
             continue
 
     if font is None:
-        try:
-            # Try to use default font
-            font = ImageFont.truetype('DejaVuSans.ttf', font_size)
-        except:
-            # Use PIL default font
-            font = ImageFont.load_default()
+        raise Exception('No suitable Japanese font found! Please install IPA Gothic or Noto Sans CJK fonts.')
 
     # Draw the character 文
     text = '文'
