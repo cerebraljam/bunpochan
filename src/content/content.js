@@ -109,7 +109,7 @@ async function showPopup(x, y, grammarPoints, sentence) {
         <div class="grammar-point" data-pattern-id="${escapeHtml(patternId)}" data-sentence="${escapeHtml(sentence)}">
           <div class="pattern-header">
             <div class="pattern-title-group">
-              <span class="pattern-title">${escapeHtml(point.pattern)}</span>
+              <span class="pattern-title">${renderPattern(point.pattern, point.patternDisplay)}</span>
               <span class="level-badge ${point.level.toLowerCase()}">${point.level}</span>
               ${registerBadge}
             </div>
@@ -193,6 +193,32 @@ function escapeHtml(text) {
   const div = document.createElement('div');
   div.textContent = text;
   return div.innerHTML;
+}
+
+/**
+ * Render pattern text with optional furigana support
+ * Allows <ruby> and <rt> tags for furigana, escapes everything else
+ */
+function renderPattern(pattern, patternDisplay) {
+  // If patternDisplay is provided and contains ruby tags, use it
+  if (patternDisplay && (patternDisplay.includes('<ruby>') || patternDisplay.includes('<rt>'))) {
+    // Create a temporary div to sanitize
+    const temp = document.createElement('div');
+    temp.textContent = patternDisplay;
+    let sanitized = temp.innerHTML;
+
+    // Allow only ruby and rt tags (unescape them)
+    sanitized = sanitized
+      .replace(/&lt;ruby&gt;/g, '<ruby>')
+      .replace(/&lt;\/ruby&gt;/g, '</ruby>')
+      .replace(/&lt;rt&gt;/g, '<rt>')
+      .replace(/&lt;\/rt&gt;/g, '</rt>');
+
+    return sanitized;
+  }
+
+  // Otherwise, escape and return the pattern
+  return escapeHtml(pattern);
 }
 
 /**
